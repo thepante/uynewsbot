@@ -18,7 +18,7 @@ const snoowrap = new Snoowrap({
 
 function registerClient(clientConfig) {
     console.log('Registering', clientConfig);
-    const isTestMode = nconf.get('environment') === 'test';
+    const isTestMode = process.env.environment === 'test';
     const client = new SnooStorm.SubmissionStream(snoowrap, {
         subreddit: clientConfig.id,
         limit: clientConfig.limit,
@@ -29,7 +29,7 @@ function registerClient(clientConfig) {
 
 async function registerClients() {
     const clients = nconf.get('subreddits');
-    const isTestMode = nconf.get('environment') === 'test';
+    const isTestMode = process.env.environment === 'test';
     const finalClients = isTestMode ? clients.filter(val => val.testmode === true) : clients;
     const waitTimeBetweenRegistrations = 60000 / finalClients.length;
 
