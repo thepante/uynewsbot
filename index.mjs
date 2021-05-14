@@ -10,10 +10,10 @@ import processRedditPost from './src/processRedditPost.mjs';
 
 const snoowrap = new Snoowrap({
     userAgent: nconf.get('bot:userAgent'),
-    clientId: nconf.get('credentials:clientId'),
-    clientSecret: nconf.get('credentials:clientSecret'),
-    username: nconf.get('credentials:redditUser'),
-    password: nconf.get('credentials:redditPass'),
+    clientId: nconf.get('credentials:clientId') || process.env.clientId,
+    clientSecret: nconf.get('credentials:clientSecret') || process.env.clientSecret,
+    username: nconf.get('credentials:redditUser') || process.env.redditUser,
+    password: nconf.get('credentials:redditPass') || process.env.redditPass,
 });
 
 function registerClient(clientConfig) {
