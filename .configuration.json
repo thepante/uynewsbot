@@ -1,32 +1,12 @@
 {
   "bot": {
-    "userAgent": "script:uynewsbottest:v2.0.7 (by /u/zonan)",
+    "userAgent": "script:canillitabot:v2.0.7 (by /u/canillita)",
     "version": "2.0.7"
   },
   "subreddits": [
     {
-      "id": "uruguay",
+      "id": "etesuntest",
       "frequencyInMs": 60000,
-      "limit": 20
-    },
-    {
-      "id": "rou",
-      "frequencyInMs": 120000,
-      "limit": 20
-    },
-    {
-      "id": "fobaluru",
-      "frequencyInMs": 120000,
-      "limit": 20
-    },
-    {
-      "id": "burises",
-      "frequencyInMs": 120000,
-      "limit": 20
-    },
-    {
-      "id": "uynewsbottest",
-      "frequencyInMs": 180000,
       "testmode": true,
       "limit": 100
     }
