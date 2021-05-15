@@ -1,19 +1,21 @@
-import fs from 'fs';
-import path from 'path';
+import Database from 'better-sqlite3';
 
-export async function checkIfProcessed(redditPost) {
-  const isTestMode = process.env.ENVIRONMENT === 'test';
-  if (isTestMode) {
+const db = new Database('data.db');
+db.prepare('CREATE TABLE IF NOT EXISTS log(id text PRIMARY KEY)').run();
+
+const isTestMode = () => process.env.ENVIRONMENT === 'test';
+
+export async function checkIfProcessed(submission) {
+  if (isTestMode()) {
     return false;
   }
-  return fs.existsSync(path.join(__basedir, 'data', redditPost.id));
+  return db.prepare('SELECT id FROM log WHERE id = ?').get(submission.id);
 }
 
-export async function flagAsProcessed(redditPost) {
-  const isTestMode = process.env.ENVIRONMENT === 'test';
-  if (isTestMode) {
+export async function flagAsProcessed(submission) {
+  if (isTestMode()) {
     return false;
   }
-  return fs.writeFileSync(path.join(__basedir, 'data', redditPost.id), '');
+  return db.prepare('INSERT INTO log(id) VALUES(?)').run(submission.id);
 }
 
