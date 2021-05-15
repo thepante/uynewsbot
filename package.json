@@ -1,10 +1,11 @@
 {
-  "name": "uynewsbot",
+  "name": "canillita",
   "version": "2.0.7",
   "description": "",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.mjs"
   },
   "keywords": [],
   "author": "",
@@ -23,5 +24,8 @@
   },
   "devDependencies": {
     "eslint": "7.22.0"
+  },
+  "engines": {
+    "node": "14"
   }
 }
