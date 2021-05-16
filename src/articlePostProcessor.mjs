@@ -11,15 +11,23 @@ function sanitizeTitleLine(pInput) {
   return sanitizedInput.trim();
 }
 
+function calcReadingTime(content) {
+  const wpm = 300;
+  const words = content.trim().split(/\s+/).length;
+  const time = Math.ceil(words / wpm);
+  return time;
+}
+
 function buildTitleLink(article) {
   const title = sanitizeTitleLine(article.title);
   return '#### [' + title + '](' + article.url + ')\n\n';
 }
 
-function buildHeaderPostTitle(article) {
+function buildHeaderPostTitle(article, content) {
   const parts = [];
   const siteName = (sanitizeTitleLine(article.siteName) || '').trim();
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
+  const readTime = calcReadingTime(content);
 
   if (siteName && siteName !== 'mysitename') { //Busqueda, WTF? srsly?
     parts.push(`**${siteName.toUpperCase()}** |`);
@@ -28,13 +36,14 @@ function buildHeaderPostTitle(article) {
     parts.push(byAuthor + ' |');
   }
 
-  return `^(❯ ${parts.join('')})\n\n---\n\n`;
+  return `^(❯ ${parts.join('')} ◶ *${readTime} min.*)\n\n---\n\n`;
 }
 
 export default function articlePostProcessor(article) {
+  const content = truncateContent(article.contentAsMd);
   let finalContent = buildTitleLink(article);
-  finalContent += buildHeaderPostTitle(article);
-  finalContent += truncateContent(article.contentAsMd);
+  finalContent += buildHeaderPostTitle(article, content);
+  finalContent += content;
   finalContent += '\n\n___';
   if (article.paywallDetected) {
     finalContent += '\n\n^(Texto posiblemente truncado por paywall)';
