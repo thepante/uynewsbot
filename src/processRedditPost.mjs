@@ -1,41 +1,50 @@
-import {checkIfProcessed, flagAsProcessed} from './botState.mjs';
-import parsePage from './PageParser/index.mjs';
+import { checkIfProcessed, flagAsProcessed } from './botState.mjs';
 import articlePostProcessor from './articlePostProcessor.mjs';
+import parsePage from './PageParser/index.mjs';
 
-export default async function processRedditPost(rPost) {
-    try {
-        if (rPost.is_self) {
-            console.log('post is not a link', rPost.id);
-            return;
-        }
-        const isProcessed = await checkIfProcessed(rPost);
-        if (isProcessed) {
-            console.log('Already processed', rPost.id);
-            return;
-        }
-        if (!rPost.url) {
-            console.log('post is not a link', rPost.id);
-        }
-
-        const postUrl = rPost.url_overridden_by_dest;
-        const pageParserResult = await parsePage(postUrl);
-        if (!pageParserResult.success) {
-            console.log('Error in process', rPost.id, postUrl, pageParserResult.error);
-            return;
-        }
-
-        const finalTextComment = articlePostProcessor(
-            pageParserResult
-        );
-
-        await rPost.reply(finalTextComment);
-        console.log('processed', rPost.id, postUrl);
-        await flagAsProcessed(rPost);
-
-    } catch(e) {
-        console.error('ERROR', e);
-        if (rPost) {
-            console.error('ERROR POST', rPost.subreddit_name_prefixed, rPost.url_overridden_by_dest, rPost.id);
-        }
-    }
+function log(msg, submission, url=false) {
+  console.log(
+    msg,
+    submission.subreddit_name_prefixed,
+    ':',
+    submission.id,
+    url ? '- ' + submission.url_overridden_by_dest : ''
+  )
 }
+
+export default async function processRedditPost(submission) {
+  try {
+    if (submission.is_self) {
+      log('Submission is self post', submission);
+      return;
+    }
+    const isProcessed = await checkIfProcessed(submission);
+    if (isProcessed) {
+      log('Already processed', submission);
+      return;
+    }
+    if (!submission.url) {
+      log('Submission is not a link', submission);
+    }
+
+    const postUrl = submission.url_overridden_by_dest;
+    const pageParserResult = await parsePage(postUrl);
+    if (!pageParserResult.success) {
+      console.log('Error in process', submission.id, postUrl, pageParserResult.error);
+      return;
+    }
+
+    const finalTextComment = articlePostProcessor(pageParserResult);
+
+    await submission.reply(finalTextComment);
+    log('Processed', submission, true);
+    await flagAsProcessed(submission);
+
+  } catch(err) {
+    console.error('ERROR', err);
+    if (submission) {
+      console.error('ERROR POST', submission.subreddit_name_prefixed, submission.url_overridden_by_dest, submission.id);
+    }
+  }
+}
+
