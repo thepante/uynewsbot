@@ -18,27 +18,29 @@ const snoowrap = new Snoowrap({
       password: process.env.REDDITPASS,
 });
 
+const isTestMode = process.env.ENVIRONMENT.toUpperCase() === 'TEST';
+
 function registerClient(clientConfig) {
   console.log('Registering', clientConfig);
-  const isTestMode = process.env.ENVIRONMENT === 'test';
   const client = new SnooStorm.SubmissionStream(snoowrap, {
     subreddit: clientConfig.id,
     limit: clientConfig.limit,
-    pollTime: isTestMode ? 30000 : clientConfig.frequencyInMs
+    pollTime: isTestMode ? 30000 : clientConfig.pollTime,
   });
   client.on('item', processRedditPost);
 }
 
 async function registerClients() {
   const clients = nconf.get('subreddits');
-  const isTestMode = process.env.ENVIRONMENT === 'test';
-  const finalClients = isTestMode ? clients.filter(val => val.testmode === true) : clients;
-  const waitTimeBetweenRegistrations = 60000 / finalClients.length;
+  const finalClients = isTestMode ? clients.filter(client => client.testMode === true) : clients;
+  const delayBetweenRegistrations = 60000 / finalClients.length;
 
   for (const client of finalClients) {
     registerClient(client);
     if (!isTestMode) {
-      await new Promise(resolve => setTimeout(resolve, waitTimeBetweenRegistrations));
+      await new Promise(resolve => setTimeout(resolve, delayBetweenRegistrations));
+    } else {
+      console.log('Running as test mode');
     }
   }
 }

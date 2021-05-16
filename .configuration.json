@@ -6,8 +6,8 @@
   "subreddits": [
     {
       "id": "etesuntest",
-      "frequencyInMs": 60000,
-      "testmode": true,
+      "pollTime": 60000,
+      "testMode": true,
       "limit": 100
     }
   ]
