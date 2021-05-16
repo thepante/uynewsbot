@@ -12,33 +12,28 @@ function sanitizeTitleLine(pInput) {
 }
 
 function buildTitleLink(article) {
-  const titleParts = [];
-  const siteName = (sanitizeTitleLine(article.siteName) || '').trim();
   const title = sanitizeTitleLine(article.title);
-  const byline = (sanitizeTitleLine(article.byline) || '').trim();
+  return '#### [' + title + '](' + article.url + ')\n\n';
+}
 
-  if (siteName && siteName !== 'mysitename') {  // Busqueda, WTF? srsly?
-    titleParts.push(siteName);
+function buildHeaderPostTitle(article) {
+  const parts = [];
+  const siteName = (sanitizeTitleLine(article.siteName) || '').trim();
+  const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
+
+  if (siteName && siteName !== 'mysitename') { //Busqueda, WTF? srsly?
+    parts.push(`**${siteName.toUpperCase()}** |`);
   }
-  if (title) {
-    titleParts.push(title);
-  }
-  if (byline && byline !== siteName) {
-    titleParts.push('Autor: ' + byline);
+  if (byAuthor && byAuthor !== siteName) {
+    parts.push(byAuthor + ' |');
   }
 
-  return '[' +
-      (titleParts.join(' - ')
-           .replace(/\[/g, '')
-           .replace(/\]/g, '')
-           .replace(/\(/g, '')
-           .replace(/\)/g, '')) +
-      '](' + article.url + ')';
+  return `^(❯ ${parts.join('')})\n\n---\n\n`;
 }
 
 export default function articlePostProcessor(article) {
   let finalContent = buildTitleLink(article);
-  finalContent += `\n\n### Texto del artículo:\n\n`;
+  finalContent += buildHeaderPostTitle(article);
   finalContent += truncateContent(article.contentAsMd);
   finalContent += '\n\n___';
   if (article.paywallDetected) {
