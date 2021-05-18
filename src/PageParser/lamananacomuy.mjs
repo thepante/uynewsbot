@@ -1,7 +1,7 @@
 import PageParserBase from "./PageParserBase.mjs";
 
 export default class Lamananacomuy extends PageParserBase {
-    static name =  'LaMañana';
+    static name =  'La Mañana';
     static domainMatcher = [
         'www.lamañana.uy',
         'xn--lamaana-7za.uy'

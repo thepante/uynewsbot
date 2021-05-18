@@ -2,7 +2,7 @@ import PageParserBase from "./PageParserBase.mjs";
 import jQuery from "jquery";
 
 export default class Elpaiscomuy extends PageParserBase {
-    static name =  'ElPais';
+    static name =  'El Pais';
     static domainMatcher = [
         'elpais.com.uy',
         'tvshow.com.uy',

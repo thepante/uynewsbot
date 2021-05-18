@@ -1,7 +1,7 @@
 import PageParserBase from "./PageParserBase.mjs";
 
 export default class Montevideocomuy extends PageParserBase {
-    static name =  'MontevideoCom';
+    static name =  'Montevideo Portal';
     static domainMatcher = [
         'montevideo.com.uy',
         'pantallazo.com.uy',

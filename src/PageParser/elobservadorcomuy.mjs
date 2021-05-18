@@ -2,7 +2,7 @@ import PageParserBase from "./PageParserBase.mjs";
 import jQuery from "jquery";
 
 export default class Elobservadorcomuy extends PageParserBase {
-    static name =  'ElObservador';
+    static name =  'El Observador';
     static domainMatcher = [
         'elobservador.com.uy'
     ]
