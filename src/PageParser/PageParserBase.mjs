@@ -128,7 +128,7 @@ export default class PageParserBase {
             contentAsMd: h2m(article.content, this.h2mConfig),
             byline: article.byline,
             title: article.title,
-            siteName: article.siteName,
+            siteName: this.constructor.name,
             url: this._url,
             dateTime,
         };

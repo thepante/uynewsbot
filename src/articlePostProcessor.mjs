@@ -25,18 +25,15 @@ function buildTitleLink(article) {
 
 function buildHeaderPostTitle(article, content) {
   const parts = [];
-  const siteName = (sanitizeTitleLine(article.siteName) || '').trim();
+  const siteName = article.siteName.trim().toUpperCase();
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
   const readTime = calcReadingTime(content);
 
-  if (siteName && siteName !== 'mysitename') { //Busqueda, WTF? srsly?
-    parts.push(`**${siteName.toUpperCase()}** | `);
-  }
   if (byAuthor && byAuthor !== siteName) {
     parts.push(`✎ ${byAuthor} | `);
   }
 
-  return `^(❯ ${parts.join('')}◶ *${readTime} min.*)\n\n---\n\n`;
+  return `^(❯ **${siteName.toUpperCase()}** | ${parts.join('')}◶ *${readTime} min.*)\n\n---\n\n`;
 }
 
 export default function articlePostProcessor(article) {
