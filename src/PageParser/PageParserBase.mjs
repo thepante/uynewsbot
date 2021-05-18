@@ -76,7 +76,6 @@ export default class PageParserBase {
 
     async fetch() {
         const dateTime = new Date().toLocaleString('en-US', {
-          weekday: 'short',
           day: '2-digit',
           month: 'short',
           year: 'numeric',
