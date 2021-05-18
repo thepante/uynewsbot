@@ -18,20 +18,6 @@ function calcReadingTime(content) {
   return time;
 }
 
-function getDateTime() {
-  const date = new Date();
-  return date.toLocaleString('en-US', {
-		weekday: 'short',
-  	day: '2-digit',
-  	month: 'short',
-  	year: 'numeric',
-    hour: '2-digit',
-  	minute: '2-digit',
-    hour12: false,
-    timeZone: 'America/Montevideo',
-  }) + ' UTC-3';
-}
-
 function buildTitleLink(article) {
   const title = sanitizeTitleLine(article.title);
   return '#### [' + title + '](' + article.url + ')\n\n';
@@ -62,7 +48,7 @@ export default function articlePostProcessor(article) {
   if (article.paywallDetected) {
     finalContent += '\n\n^(Texto posiblemente truncado por paywall)';
   }
-  finalContent += `\n\n[^(**bot info**)](/#)^( | v${nconf.get('bot:version')} | Snapshot: ${getDateTime()})`;
+  finalContent += `\n\n[^(**bot info**)](/#)^( | v${nconf.get('bot:version')} | Snapshot: ${article.dateTime})`;
 
   return finalContent;
 }

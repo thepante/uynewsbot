@@ -75,7 +75,16 @@ export default class PageParserBase {
     }
 
     async fetch() {
-        const time = new Date().toString();
+        const dateTime = new Date().toLocaleString('en-US', {
+          weekday: 'short',
+          day: '2-digit',
+          month: 'short',
+          year: 'numeric',
+          hour: '2-digit',
+          minute: '2-digit',
+          hour12: false,
+          timeZone: 'America/Montevideo',
+        }) + ' UTC-3';
         const page = await this._fetch(this._url);
         let data;
         if (!page.success) {
@@ -121,7 +130,7 @@ export default class PageParserBase {
             title: article.title,
             siteName: article.siteName,
             url: this._url,
-            date: time
+            dateTime,
         };
     }
 
