@@ -44,13 +44,13 @@ function buildHeaderPostTitle(article, content) {
   const readTime = calcReadingTime(content);
 
   if (siteName && siteName !== 'mysitename') { //Busqueda, WTF? srsly?
-    parts.push(`**${siteName.toUpperCase()}** |`);
+    parts.push(`**${siteName.toUpperCase()}** | `);
   }
   if (byAuthor && byAuthor !== siteName) {
-    parts.push(byAuthor + ' |');
+    parts.push(`✎ ${byAuthor} | `);
   }
 
-  return `^(❯ ${parts.join('')} ◶ *${readTime} min.*)\n\n---\n\n`;
+  return `^(❯ ${parts.join('')}◶ *${readTime} min.*)\n\n---\n\n`;
 }
 
 export default function articlePostProcessor(article) {
