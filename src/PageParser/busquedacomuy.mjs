@@ -3,6 +3,7 @@ import jQuery from "jquery";
 
 export default class Busquedacomuy extends PageParserBase {
     static name =  'Búsqueda';
+    static altName = 'Semanario BUSQUEDA';
     static domainMatcher = [
         'busqueda.com.uy'
     ]

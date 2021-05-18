@@ -129,6 +129,7 @@ export default class PageParserBase {
             byline: article.byline,
             title: article.title,
             siteName: this.constructor.name,
+            altName: this.constructor.altName,
             url: this._url,
             dateTime,
         };
