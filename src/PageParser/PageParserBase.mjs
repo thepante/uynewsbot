@@ -47,7 +47,12 @@ export default class PageParserBase {
             },
             b: function (node) {
                 if (node.md) {
-                    return `**${node.md}**`;
+                    return `**${node.md.trim()}**`;
+                }
+            },
+            strong: function (node) {
+                if (node.md) {
+                    return `**${node.md.trim()}**`;
                 }
             },
             p: function (node) {
