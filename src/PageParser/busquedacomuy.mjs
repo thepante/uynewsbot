@@ -11,7 +11,8 @@ export default class Busquedacomuy extends PageParserBase {
         '.main-img',
         '.plan_suscriptores',
         '.item.comments',
-        '.despliegue-info.align-middle'
+        '.despliegue-info.align-middle',
+        '.caption',
     ];
     checkPaywalJSDOM(dom) {
         const $ = jQuery(dom.window);
