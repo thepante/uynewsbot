@@ -45,6 +45,11 @@ export default class PageParserBase {
                     return `\n###### ${node.md}\n`
                 }
             },
+            b: function (node) {
+                if (node.md) {
+                    return `**${node.md}**`;
+                }
+            },
         }
     }
     constructor(url){
