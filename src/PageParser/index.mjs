@@ -15,6 +15,7 @@ import Montevideocomuy from './montevideocomuy.mjs';
 import PageParserBase from "./PageParserBase.mjs";
 import Subrayadocomuy from "./subrayadocomuy.mjs";
 import Teledocecomuy from "./teledocecomuy.mjs";
+import Telenochecomuy from './telenochecomuy.mjs';
 import _ from 'lodash';
 import {getCanonicalURL} from "../canonical.mjs";
 
@@ -37,6 +38,7 @@ export default async function parsePage(url) {
         Montevideocomuy,
         Subrayadocomuy,
         Teledocecomuy,
+        Telenochecomuy,
     ];
 
     const ProcessorClasses = _.filter(processors, function(p) {
