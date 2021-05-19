@@ -1,11 +1,12 @@
-import Cientoochentacomuy from './180comuy.mjs';
 import Bbccom from './bbccom.mjs';
 import Brechacomuy from './brechacomuy.mjs';
 import Busquedacomuy from './busquedacomuy.mjs';
+import Cientoochentacomuy from './180comuy.mjs';
 import Diariocambiocomuy from './diariocambiocomuy.mjs';
 import Elcascotenewscom from "./elcascotenewscom.mjs";
 import Elobservadorcomuy from './elobservadorcomuy.mjs';
 import Elpaiscomuy from './elpaiscomuy.mjs';
+import Gubuy from './gubuy.mjs';
 import Ladiariacomuy from './ladiariacomuy.mjs';
 import Lamananacomuy from "./lamananacomuy.mjs";
 import Lared21comuy from "./lared21comuy.mjs";
@@ -20,14 +21,15 @@ import {getCanonicalURL} from "../canonical.mjs";
 
 export default async function parsePage(url) {
     const processors = [
-        Cientoochentacomuy,
         Bbccom,
         Brechacomuy,
         Busquedacomuy,
+        Cientoochentacomuy,
         Diariocambiocomuy,
         Elcascotenewscom,
         Elobservadorcomuy,
         Elpaiscomuy,
+        Gubuy,
         Ladiariacomuy,
         Lamananacomuy,
         Lared21comuy,
