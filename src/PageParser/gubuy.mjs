@@ -8,7 +8,9 @@ export default class Gubuy extends PageParserBase {
   selectorsToRemove = [
     '.Page-info',
     'table',
-    'h3'
+    'h3',
+    '.lista-documento-fecha',
+    '.fecha-destacada',
   ];
 }
 
