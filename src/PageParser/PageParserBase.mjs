@@ -32,7 +32,7 @@ export default class PageParserBase {
             },
             h4: function (node) {
                 if (node.md) {
-                    return `\n###### ${node.md}\n`
+                    return `\n##### ${node.md}\n`
                 }
             },
             h5: function (node) {
@@ -48,6 +48,13 @@ export default class PageParserBase {
             b: function (node) {
                 if (node.md) {
                     return `**${node.md}**`;
+                }
+            },
+            p: function (node) {
+                if (node.md) {
+                  const bold = node.attrs?.class?.includes('prominent');
+                  const p = bold ? `**${node.md.trim()}**` : node.md;
+                  return `\n${p}\n\n`;
                 }
             },
         }
