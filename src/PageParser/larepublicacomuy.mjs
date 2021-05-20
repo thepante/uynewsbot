@@ -1,8 +1,7 @@
 import PageParserBase from "./PageParserBase.mjs";
-import jQuery from "jquery";
 
 export default class Larepublicacomuy extends PageParserBase {
-    static name =  'La Red 21';
+    static name =  'La República';
     static domainMatcher = [
         'republica.com.uy'
     ]
