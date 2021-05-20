@@ -27,7 +27,7 @@ export default class PageParserBase {
             },
             h3: function (node) {
                 if (node.md) {
-                    return `\n##### ${node.md}\n`
+                    return `\n#### ${node.md}\n`
                 }
             },
             h4: function (node) {
@@ -47,12 +47,12 @@ export default class PageParserBase {
             },
             b: function (node) {
                 if (node.md) {
-                    return `**${node.md.trim()}**`;
+                    return `**${node.md.trim()}** `;
                 }
             },
             strong: function (node) {
                 if (node.md) {
-                    return `**${node.md.trim()}**`;
+                    return `**${node.md.trim()}** `;
                 }
             },
             p: function (node) {
