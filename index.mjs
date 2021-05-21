@@ -2,7 +2,6 @@ import nconf from 'nconf';
 import SnooStorm from 'snoostorm';
 import Snoowrap from 'snoowrap';
 import express from 'express';
-import axios from 'axios';
 
 import processRedditPost from './src/processRedditPost.mjs';
 
@@ -48,17 +47,11 @@ async function registerClients() {
 registerClients();
 
 
-// temp
 const app = express();
 
 app.get("/", (req, res) => {
-  console.log(Date.now(), "ping");
   res.sendStatus(200);
 });
 
 app.listen(process.env.PORT);
-
-setInterval(() => {
-  axios.get(`https://${process.env.PROJECT_DOMAIN}.glitch.me/`);
-}, 280000);
 
