@@ -16,4 +16,4 @@ COPY . .
 
 RUN mkdir -p logs
 
-CMD pm2 --log logs/out.log --time start index.mjs
+CMD [ "npm", "run", "pm2" ]
