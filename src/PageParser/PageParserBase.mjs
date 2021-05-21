@@ -5,6 +5,9 @@ import h2m from 'h2m';
 import jQuery from 'jquery';
 import buildJSDOM from '../JSDOMBuilder.mjs';
 
+const bold = text => `**${text.trim()}**`;
+const boldTitle = text => `\n${bold(text)}\n\n`;
+
 export default class PageParserBase {
     static domainMatcher = [];
     selectorsToRemove = [];
@@ -27,38 +30,38 @@ export default class PageParserBase {
             },
             h3: function (node) {
                 if (node.md) {
-                    return `\n#### ${node.md}\n`
+                    return boldTitle(node.md);
                 }
             },
             h4: function (node) {
                 if (node.md) {
-                    return `\n##### ${node.md}\n`
+                    return boldTitle(node.md);
                 }
             },
             h5: function (node) {
                 if (node.md) {
-                    return `\n###### ${node.md}\n`
+                    return boldTitle(node.md);
                 }
             },
             h6: function (node) {
                 if (node.md) {
-                    return `\n###### ${node.md}\n`
+                    return boldTitle(node.md);
                 }
             },
             b: function (node) {
                 if (node.md) {
-                    return `**${node.md.trim()}** `;
+                    return `${bold(node.md)} `;
                 }
             },
             strong: function (node) {
                 if (node.md) {
-                    return `**${node.md.trim()}** `;
+                    return `${bold(node.md)} `;
                 }
             },
             p: function (node) {
                 if (node.md) {
                   const bold = node.attrs?.class?.includes('prominent');
-                  const p = bold ? `**${node.md.trim()}**` : node.md;
+                  const p = bold ? `${bold(node.md)}` : node.md;
                   return `\n${p}\n\n`;
                 }
             },
