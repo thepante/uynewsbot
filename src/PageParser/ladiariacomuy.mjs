@@ -10,6 +10,7 @@ export default class Ladiariacomuy extends PageParserBase {
         '#paywallmodal',
         '.softpaywall',
         '.ld-subscribe-box-wrap',
-        '.article-date-author'
+        '.article-date-author',
+        'figcaption',
     ];
 }
