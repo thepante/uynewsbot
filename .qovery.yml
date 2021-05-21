@@ -1,0 +1,11 @@
+---
+application:
+  name: "canillita"
+  project: "canillita"
+  organization: "QoveryCommunity"
+routers:
+- name: "main-canillita"
+  routes:
+  - application_name: "canillita"
+    paths:
+    - "/*"
