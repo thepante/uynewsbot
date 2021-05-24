@@ -3,6 +3,7 @@ import Brechacomuy from './brechacomuy.mjs';
 import Busquedacomuy from './busquedacomuy.mjs';
 import Cientoochentacomuy from './180comuy.mjs';
 import Diariocambiocomuy from './diariocambiocomuy.mjs';
+import Dwcom from './dwcom.mjs';
 import Elcascotenewscom from "./elcascotenewscom.mjs";
 import Elobservadorcomuy from './elobservadorcomuy.mjs';
 import Elpaiscomuy from './elpaiscomuy.mjs';
@@ -27,6 +28,7 @@ export default async function parsePage(url) {
         Busquedacomuy,
         Cientoochentacomuy,
         Diariocambiocomuy,
+        Dwcom,
         Elcascotenewscom,
         Elobservadorcomuy,
         Elpaiscomuy,
