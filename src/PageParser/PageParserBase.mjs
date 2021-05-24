@@ -20,12 +20,12 @@ export default class PageParserBase {
             },
             h1: function (node) {
                 if (node.md) {
-                    return `\n### ${node.md}\n`
+                    return boldTitle(node.md);
                 }
             },
             h2: function (node) {
                 if (node.md) {
-                    return `\n#### ${node.md}\n`
+                    return boldTitle(node.md);
                 }
             },
             h3: function (node) {
