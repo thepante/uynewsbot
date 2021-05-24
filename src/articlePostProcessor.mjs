@@ -43,7 +43,7 @@ export default function articlePostProcessor(article) {
   if (article.paywallDetected) {
     finalContent += '\n\n^(Texto posiblemente truncado por paywall)';
   }
-  finalContent += `\n\n[^(**bot info**)](/#)^( | v${nconf.get('bot:version')} | Snapshot: ${article.dateTime})`;
+  finalContent += `\n\n[^(**bot info**)](${nconf.get('bot:link')})^( | v${nconf.get('bot:version')} | Snapshot: ${article.dateTime})`;
 
   return finalContent;
 }
