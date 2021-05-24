@@ -1,4 +1,5 @@
 {
+  "remote_db": true,
   "bot": {
     "userAgent": "bot:uynewsbottest:v2.0.7 (by /u/thepante)",
     "version": "2.0.7"
