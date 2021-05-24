@@ -22,7 +22,9 @@ export default class Elobservadorcomuy extends PageParserBase {
         '.member',
         '.tag',
         '.mensaje_paywall2',
-        '.mensaje_member'
+        '.mensaje_member',
+        '.boxepigrafe',
+        '.epigrafe',
     ];
     checkPaywalJSDOM(dom) {
         const $ = jQuery(dom.window);
