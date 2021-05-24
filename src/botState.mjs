@@ -55,39 +55,42 @@ for (const subreddit of subreddits) {
 // autoclean oldest entries in tables. once per month
 cron.schedule('0 6 1 * *', async function() {
   for (const subreddit of subreddits) {
-    const r = subreddit.id;
-    const keep = subreddit.limit * 3;
-    let exec = null;
+    try {
+      const r = subreddit.id;
+      const keep = subreddit.limit * 3;
+      let exec = null;
 
-    const log = n => console.log(`Cleaning table for ${r}, keep (max) newest ${keep} rows: ${n} deleted`);
+      const log = n => console.log(`Cleaning table for ${r}, keep (max) newest ${keep} rows: ${n} deleted`);
 
-    if (db_remote) {
-      // mongo -> clean collection
-      const total = await collections[r].countDocuments();
-      const toDelete = Math.max(total - 20, 0);
+      if (db_remote) {
+        // mongo -> clean collection
+        const total = await collections[r].countDocuments();
+        const toDelete = total - keep;
 
-      if (toDelete < 1) return;
+        if (toDelete < 1) return;
 
-      collections[r].find({}, { _id: true }).sort({ _id: 1 }).limit(toDelete).exec((err, docs) => {
-        if (err) return console.error('error', err);
-        const ids = docs.map(doc => doc._id);
-        console.log("IDS TO DELETE", ids)
-        return collections[r].deleteMany({ _id: ids }, (err, res) => {
-          err ? console.error(err) : log(res.n);
+        collections[r].find({}, { _id: true }).sort({ _id: 1 }).limit(toDelete).exec((err, docs) => {
+          if (err) return console.error('error', err);
+          const ids = docs.map(doc => doc._id);
+          console.log("IDS TO DELETE", ids)
+          return collections[r].deleteMany({ _id: ids }, (err, res) => {
+            err ? console.error(err) : log(res.n);
+          });
         });
-      });
-    } else {
-      // sql -> clean table
-      exec = db.prepare(`
-        DELETE FROM ${r} WHERE ROWID IN (
-          SELECT ROWID FROM ${r}
-          ORDER BY ROWID DESC
-          LIMIT -1 OFFSET ${keep}
-        )
-      `).run();
-      log(exec.changes);
+      } else {
+        // sql -> clean table
+        exec = db.prepare(`
+          DELETE FROM ${r} WHERE ROWID IN (
+            SELECT ROWID FROM ${r}
+            ORDER BY ROWID DESC
+            LIMIT -1 OFFSET ${keep}
+          )
+        `).run();
+        log(exec.changes);
+      }
+    } catch(err) {
+      console.error(err);
     }
-
   }
 }, {
   timezone: "America/Montevideo"
