@@ -1,8 +1,8 @@
 {
   "remote_db": true,
   "bot": {
-    "userAgent": "bot:uynewsbottest:v2.0.7 (by /u/thepante)",
-    "version": "2.0.7",
+    "userAgent": "script:u/bot_canillita:v2.1.0 (by /u/thepante)",
+    "version": "2.1.0",
     "link": "/user/bot_canillita/comments/nk0xfg/info/"
   },
   "subreddits": [
