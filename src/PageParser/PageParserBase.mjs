@@ -65,6 +65,11 @@ export default class PageParserBase {
                   return `\n${p}\n\n`;
                 }
             },
+            em: function (node) {
+                if (node.md) {
+                    return `*${node.md.trim()}* `;
+                }
+            },
         }
     }
     constructor(url){
