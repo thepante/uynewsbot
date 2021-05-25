@@ -7,6 +7,21 @@
   },
   "subreddits": [
     {
+      "id": "uruguay",
+      "pollTime": 60000,
+      "limit": 20
+    },
+    {
+      "id": "burises",
+      "pollTime": 120000,
+      "limit": 20
+    },
+    {
+      "id": "fobaluru",
+      "pollTime": 120000,
+      "limit": 20
+    },
+    {
       "id": "etesuntest",
       "pollTime": 60000,
       "testMode": true,
