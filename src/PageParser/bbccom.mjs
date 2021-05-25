@@ -1,5 +1,4 @@
 import PageParserBase from "./PageParserBase.mjs";
-import jQuery from "jquery";
 
 export default class Bbccom extends PageParserBase {
     static name =  'BBC';

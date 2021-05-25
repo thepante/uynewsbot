@@ -1,5 +1,4 @@
 import PageParserBase from "./PageParserBase.mjs";
-import jQuery from 'jquery';
 
 export default class Ladiariacomuy extends PageParserBase {
     static name =  'La Diaria';
