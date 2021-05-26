@@ -44,11 +44,12 @@ if (db_remote) {
 
 // db tables/schema creation
 for (const subreddit of subreddits) {
+  const subredditName = subreddit.id.toLowerCase();
   if (db_remote) {
-    const schema = new mongoose.Schema({ _id: String, }, { collection: subreddit.id });
-    collections[subreddit.id] = mongoose.model(subreddit.id, schema);
+    const schema = new mongoose.Schema({ _id: String, }, { collection: subredditName });
+    collections[subredditName] = mongoose.model(subredditName, schema);
   } else {
-    db.prepare(`CREATE TABLE IF NOT EXISTS ${subreddit.id} (sid text PRIMARY KEY)`).run();
+    db.prepare(`CREATE TABLE IF NOT EXISTS ${subredditName} (sid text PRIMARY KEY)`).run();
   }
 }
 
@@ -56,7 +57,7 @@ for (const subreddit of subreddits) {
 cron.schedule('0 6 1 * *', async function() {
   for (const subreddit of subreddits) {
     try {
-      const r = subreddit.id;
+      const r = subreddit.id.toLowerCase();
       const keep = subreddit.limit * 3;
       let exec = null;
 
@@ -97,7 +98,7 @@ cron.schedule('0 6 1 * *', async function() {
 });
 
 export async function checkIfProcessed(submission) {
-  const subreddit = submission.subreddit.display_name;
+  const subreddit = submission.subreddit.display_name.toLowerCase();
 
   if (db_remote) {
     return await collections[subreddit].findOne({ _id: submission.id });
@@ -107,7 +108,7 @@ export async function checkIfProcessed(submission) {
 }
 
 export async function flagAsProcessed(submission) {
-  const subreddit = submission.subreddit.display_name;
+  const subreddit = submission.subreddit.display_name.toLowerCase();
 
   if (db_remote) {
     const record = new collections[subreddit]({ _id: submission.id });
