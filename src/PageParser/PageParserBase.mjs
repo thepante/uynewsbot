@@ -81,6 +81,9 @@ export default class PageParserBase {
                     return wrapBetween(node.md, '*');
                 }
             },
+            br: function (node) {
+                return '  \n';
+            },
         }
     }
     constructor(url){
