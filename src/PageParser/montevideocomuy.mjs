@@ -8,11 +8,14 @@ export default class Montevideocomuy extends PageParserBase {
         'cartelera.com.uy': 'Cartelera',
         'gastronomia.com.uy': 'Gastronomía',
         'futbol.com.uy': 'Fútbol UY',
+        'galeria.montevideo.com.uy': 'Galería',
+        'airbag.uy': 'Airbag',
     };
     static domainMatcher = Object.keys(this.publisherSites);
     selectorsToRemove = [
         '#interes',
         '.pie_arriba',
-        '.pie_abajo'
+        '.pie_abajo',
+        '.autor',
     ]
 }
