@@ -35,6 +35,7 @@ function buildHeaderPostTitle(article, content) {
 }
 
 export default function articlePostProcessor(article) {
+  const infoLink = process.env.INFOLINK || nconf.get('bot:link');
   const content = truncateContent(article.contentAsMd);
   let finalContent = buildTitleLink(article);
   finalContent += buildHeaderPostTitle(article, content);
@@ -43,7 +44,7 @@ export default function articlePostProcessor(article) {
   if (article.paywallDetected) {
     finalContent += '\n\n^(Texto posiblemente truncado por paywall)';
   }
-  finalContent += `\n\n[^(**bot info**)](${nconf.get('bot:link')})^( | v${nconf.get('bot:version')} | Snapshot: ${article.dateTime})`;
+  finalContent += `\n\n[^(**bot info**)](${infoLink})^( | v${nconf.get('bot:version')} | Snapshot: ${article.dateTime})`;
 
   return finalContent;
 }
