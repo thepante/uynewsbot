@@ -2,12 +2,13 @@ import PageParserBase from "./PageParserBase.mjs";
 import jQuery from "jquery";
 
 export default class Elpaiscomuy extends PageParserBase {
-    static name =  'El Pais';
-    static domainMatcher = [
-        'elpais.com.uy',
-        'tvshow.com.uy',
-        'ovaciondigital.com.uy'
-    ]
+    static name =  'El País';
+    static publisherSites = {
+        'elpais.com.uy': '',
+        'tvshow.com.uy': 'TVShow',
+        'ovaciondigital.com.uy': 'Ovación',
+    };
+    static domainMatcher = Object.keys(this.publisherSites);
     selectorsToRemove = [
         '.report-error-container',
         '.contenido-exclusivo-nota',

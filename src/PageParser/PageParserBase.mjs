@@ -90,6 +90,9 @@ export default class PageParserBase {
         this._url = url;
         this._originalContent = '';
         this._paywallDetected = false;
+
+        const domain = new URL(url).hostname.replace(/^(w{3}\.)/, '');
+        this._subsiteName = this.constructor?.publisherSites[domain];
     }
 
     afterFetchFilter(data) {
@@ -168,6 +171,7 @@ export default class PageParserBase {
             title: article.title,
             siteName: this.constructor.name,
             altName: this.constructor.altName,
+            subsiteName: this._subsiteName,
             url: this._url,
             dateTime,
         };

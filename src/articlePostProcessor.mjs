@@ -24,12 +24,14 @@ function buildTitleLink(article) {
 }
 
 function buildHeaderPostTitle(article, content) {
-  const siteName = article.siteName.trim();
+  let siteName = article.siteName.trim();
+  const subsiteName = article.subsiteName;
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
   const readTime = calcReadingTime(content);
   const authorIsAPerson = byAuthor && byAuthor !== siteName && byAuthor !== article.altName;
 
   const authorName = authorIsAPerson ? `✎ ${byAuthor} | ` : '';
+  siteName = (subsiteName ? `${subsiteName.trim()} · ` : '') + siteName;
 
   return `^(❯ **${siteName.toUpperCase()}** | ${authorName}◶ *${readTime} min.*)\n\n---\n\n`;
 }
