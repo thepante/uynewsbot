@@ -8,6 +8,17 @@ import buildJSDOM from '../JSDOMBuilder.mjs';
 const bold = text => `**${text.trim()}**`;
 const boldTitle = text => `\n${bold(text)}\n\n`;
 
+// This helps to fix issues when the html tag itself contains spaces on the edges,
+// making the md "tag" to not being properly applied because of that separation.
+// With this method: bold or italics texts can be followed by a comma/parenthesis/etc
+// without adding a space before them. But also keep spaces when should
+function wrapBetween(input, tag) {
+    let text = tag + input.trim() + tag;
+    if (input.match(/^\s/)) text = ' ' + text;
+    if (input.match(/\s$/)) text = text + ' ';
+    return text;
+};
+
 export default class PageParserBase {
     static domainMatcher = [];
     selectorsToRemove = [];
@@ -50,12 +61,12 @@ export default class PageParserBase {
             },
             b: function (node) {
                 if (node.md) {
-                    return `${bold(node.md)} `;
+                    return wrapBetween(node.md, '**');
                 }
             },
             strong: function (node) {
                 if (node.md) {
-                    return `${bold(node.md)} `;
+                    return wrapBetween(node.md, '**');
                 }
             },
             p: function (node) {
@@ -67,7 +78,7 @@ export default class PageParserBase {
             },
             em: function (node) {
                 if (node.md) {
-                    return `*${node.md.trim()}* `;
+                    return wrapBetween(node.md, '*');
                 }
             },
         }
