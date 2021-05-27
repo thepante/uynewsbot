@@ -11,6 +11,7 @@ export default class Montevideocomuy extends PageParserBase {
     ]
     selectorsToRemove = [
         '#interes',
+        '.pie_arriba',
         '.pie_abajo'
     ]
 }
