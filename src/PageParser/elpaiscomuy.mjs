@@ -20,7 +20,9 @@ export default class Elpaiscomuy extends PageParserBase {
         '.modules-ads-container',
         '.ads-under-header',
         '.ads-under-header',
-        'footer'
+        'footer',
+        '.composite-captioned-image',
+        '.image-container',
     ];
     checkPaywalJSDOM(dom) {
         const $ = jQuery(dom.window);
