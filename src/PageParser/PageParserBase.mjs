@@ -92,7 +92,7 @@ export default class PageParserBase {
         this._paywallDetected = false;
 
         const domain = new URL(url).hostname.replace(/^(w{3}\.)/, '');
-        this._subsiteName = this.constructor?.publisherSites[domain];
+        this._subsiteName = this.constructor?.publisherSites?.[domain];
     }
 
     afterFetchFilter(data) {
