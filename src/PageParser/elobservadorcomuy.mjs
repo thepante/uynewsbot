@@ -28,8 +28,8 @@ export default class Elobservadorcomuy extends PageParserBase {
     ];
     checkPaywalJSDOM(dom) {
         const $ = jQuery(dom.window);
-        const dataMember = $('meta[name="cXenseParse:ohs-tag"]');
-        const tipoNotaMember = $('meta[name="cXenseParse:ohs-tiponota"]');
-        return dataMember && dataMember.attr('content') === 'Member' || tipoNotaMember.attr('content') === 'Member';
+        let tags = $('meta[name="cXenseParse:ohs-tag"]').attr('content');
+        tags += $('meta[name="cXenseParse:ohs-tiponota"]').attr('content');
+        return tags.match(/member/i) != undefined;
     }
 }
