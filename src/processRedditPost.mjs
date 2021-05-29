@@ -23,6 +23,11 @@ export default async function processRedditPost(submission) {
       log('Already processed', submission);
       return;
     }
+    // avoid TypeError [ERR_INVALID_URL] when is a crosspost starting without the domain
+    if (submission.url_overridden_by_dest.match(/^\/(r|u(ser)?)\//)) {
+      log('Crosspost link without domain', submission);
+      submission.url_overridden_by_dest = submission.crosspost_parent_list[0].url;
+    }
     if (!submission.url) {
       log('Submission is not a link', submission);
     }
