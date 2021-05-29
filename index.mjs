@@ -9,8 +9,11 @@ nconf.file('conf', '.configuration.json');
 
 console.log('Env:', process.env.ENVIRONMENT);
 
+const ua = nconf.get('bot:userAgent');
+const userAgent = ua.starts + process.env.npm_package_version + ua.ends;
+
 const snoowrap = new Snoowrap({
-     userAgent: nconf.get('bot:userAgent'),
+     userAgent: userAgent,
       clientId: process.env.CLIENTID,
   clientSecret: process.env.CLIENTSECRET,
       username: process.env.REDDITUSER,
