@@ -36,6 +36,13 @@ function buildHeaderPostTitle(article, content) {
   return `^(❯ **${siteName.toUpperCase()}** | ${authorName}◶ *${readTime} min.*)\n\n---\n\n`;
 }
 
+function getPaywallNotice(siteName) {
+  let text = `\n\n> ⚠️ Se detectó que se trata de una publicación de acceso exclusivo para suscriptores pagos a ${siteName}. `;
+  text += 'La restricción no se puede evitar, y este humilde canillita no tiene cuentas pagas.\n';
+  text += '> \n > El texto visible públicamente es el mencionado anteriormente.\n\n---';
+  return text;
+}
+
 export default function articlePostProcessor(article) {
   const infoLink = process.env.INFOLINK || nconf.get('bot:link');
   const content = truncateContent(article.contentAsMd);
@@ -44,7 +51,7 @@ export default function articlePostProcessor(article) {
   finalContent += content;
   finalContent += '\n\n___';
   if (article.paywallDetected) {
-    finalContent += '\n\n^(Texto posiblemente truncado por paywall)';
+    finalContent += getPaywallNotice(article.siteName);
   }
   finalContent += `\n\n[^(**bot info**)](${infoLink})^( | v${nconf.get('bot:version')} | Snapshot: ${article.dateTime})`;
 
