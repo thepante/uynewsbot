@@ -44,7 +44,7 @@ function getPaywallNotice(siteName) {
 }
 
 export default function articlePostProcessor(article) {
-  const infoLink = process.env.INFOLINK || nconf.get('bot:link');
+  const infoLink = process.env.INFOLINK ? `[^(**bot info**)](${process.env.INFOLINK})` : '';
   const content = truncateContent(article.contentAsMd);
   let finalContent = buildTitleLink(article);
   finalContent += buildHeaderPostTitle(article, content);
@@ -53,7 +53,7 @@ export default function articlePostProcessor(article) {
   if (article.paywallDetected) {
     finalContent += getPaywallNotice(article.siteName);
   }
-  finalContent += `\n\n[^(**bot info**)](${infoLink})^( | v${process.env.npm_package_version} | Snapshot: ${article.dateTime})`;
+  finalContent += `\n\n${infoLink}^( ${infoLink ? '|' : 'bot'} v${process.env.npm_package_version} | Snapshot: ${article.dateTime})`;
 
   return finalContent;
 }
