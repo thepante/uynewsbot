@@ -8,6 +8,7 @@ export default class Ladiariacomuy extends PageParserBase {
     selectorsToRemove = [
         '#paywallmodal',
         '.softpaywall',
+        '.softwall',
         '.ld-subscribe-box-wrap',
         '.article-date-author',
         'figcaption',
