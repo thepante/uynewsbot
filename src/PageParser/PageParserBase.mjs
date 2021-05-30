@@ -13,7 +13,9 @@ const boldTitle = text => `\n${bold(text)}\n\n`;
 // With this method: bold or italics texts can be followed by a comma/parenthesis/etc
 // without adding a space before them. But also keep spaces when should
 function wrapBetween(input, tag) {
-    let text = tag + input.trim() + tag;
+    input = input.trim();
+    if (input === '.') return input;
+    let text = tag + input + tag;
     if (input.match(/^\s/)) text = ' ' + text;
     if (input.match(/\s$/)) text = text + ' ';
     return text;
