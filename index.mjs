@@ -10,7 +10,7 @@ nconf.file('conf', '.configuration.json');
 console.log('Env:', process.env.ENVIRONMENT);
 
 const ua = nconf.get('bot:userAgent');
-const userAgent = ua.starts + process.env.npm_package_version + ua.ends;
+const userAgent = ua.replace('@version@', process.env.npm_package_version);
 
 const snoowrap = new Snoowrap({
      userAgent: userAgent,
