@@ -28,7 +28,7 @@ function buildHeaderPostTitle(article, content) {
   const subsiteName = article.subsiteName;
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
   const readTime = calcReadingTime(content);
-  const authorIsAPerson = byAuthor && byAuthor !== siteName && byAuthor !== article.altName;
+  const authorIsAPerson = byAuthor && byAuthor.toLowerCase() !== siteName.toLowerCase() && byAuthor !== article.altName.toLowerCase();
 
   const authorName = authorIsAPerson ? `✎ ${byAuthor} | ` : '';
   siteName = (subsiteName ? `${subsiteName.trim()} · ` : '') + siteName;
