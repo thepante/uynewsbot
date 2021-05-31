@@ -28,8 +28,11 @@ export default class PageParserBase {
         converter: 'CommonMark', //CommonMark
         overides: {
             img: function() { return ''},
-            a: function (a) {
-                return a.md + '';
+            a: function (node) {
+                if (node.md) {
+                    const ignore = node.md.match(/https?:\/\/(t.co|bit.ly)/) != undefined;
+                    return ignore ? '' : node.md;
+                }
             },
             h1: function (node) {
                 if (node.md) {
