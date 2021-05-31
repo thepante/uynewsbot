@@ -25,6 +25,8 @@ export default class Elobservadorcomuy extends PageParserBase {
         '.mensaje_member',
         '.boxepigrafe',
         '.epigrafe',
+        '.link_a_nota_propia',
+        '.nota-propia',
     ];
     checkPaywalJSDOM(dom) {
         const $ = jQuery(dom.window);
