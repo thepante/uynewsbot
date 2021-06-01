@@ -1,5 +1,4 @@
 {
-  "remote_db": true,
   "bot": {
     "userAgent": "script:u/bot_canillita (news parser):v@version@ (by u/thepante)"
   },

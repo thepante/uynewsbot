@@ -5,8 +5,6 @@ WORKDIR /opt/app
 ENV PORT=3000
 EXPOSE 3000
 
-RUN apk --update add make python gcc g++
-
 COPY package*.json ./
 
 RUN npm install -g pm2
