@@ -1,5 +1,4 @@
 import stripHtml from 'string-strip-html';
-import nconf from 'nconf';
 
 const MAX_LENGTH = 9200;
 const truncateContent = (input) => input.length > MAX_LENGTH ? `${input.substring(0, MAX_LENGTH)}...(Truncado)` : input;
@@ -28,7 +27,7 @@ function buildHeaderPostTitle(article, content) {
   const subsiteName = article.subsiteName;
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
   const readTime = calcReadingTime(content);
-  const authorIsAPerson = byAuthor && byAuthor.toLowerCase() !== siteName.toLowerCase() && byAuthor !== article.altName.toLowerCase();
+  const authorIsAPerson = byAuthor && byAuthor.toLowerCase() !== siteName.toLowerCase() && byAuthor !== article.altName?.toLowerCase();
 
   const authorName = authorIsAPerson ? `✎ ${byAuthor} | ` : '';
   siteName = (subsiteName ? `${subsiteName.trim()} · ` : '') + siteName;
