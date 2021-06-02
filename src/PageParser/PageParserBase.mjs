@@ -76,6 +76,7 @@ export default class PageParserBase {
             },
             p: function (node) {
                 if (node.md) {
+                  node.md = node.md.replace(/^-\s/, '');
                   const isBold = node.attrs?.class?.includes('prominent');
                   const p = isBold ? `${bold(node.md)}` : node.md;
                   return `\n${p}\n\n`;
