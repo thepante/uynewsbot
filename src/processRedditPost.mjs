@@ -52,6 +52,12 @@ export default async function processRedditPost(submission) {
     }
 
     const postUrl = submission.url_overridden_by_dest;
+
+    if (postUrl.match(/.*\.pdf.*/i)) {
+      console.log('Error -> link detected as .pdf', submission.id, postUrl);
+      return;
+    }
+
     const pageParserResult = await parsePage(postUrl);
     if (!pageParserResult.success) {
       console.log('Error in process', submission.id, postUrl, pageParserResult.error);
