@@ -76,8 +76,8 @@ export default class PageParserBase {
             },
             p: function (node) {
                 if (node.md) {
-                  const bold = node.attrs?.class?.includes('prominent');
-                  const p = bold ? `${bold(node.md)}` : node.md;
+                  const isBold = node.attrs?.class?.includes('prominent');
+                  const p = isBold ? `${bold(node.md)}` : node.md;
                   return `\n${p}\n\n`;
                 }
             },
