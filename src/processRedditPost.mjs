@@ -15,8 +15,21 @@ function log(msg, submission, url=false) {
 export default async function processRedditPost(submission) {
   try {
     if (submission.is_self) {
-      log('Submission is self post', submission);
-      return;
+      const logSP = (symbol, msg) => log(`[${symbol}] Submission is self post -> ${msg} -`, submission);
+      const rName = submission.subreddit.display_name.toLowerCase();
+      const r = subreddits.filter(sub => sub.id.toLowerCase() === rName)[0];
+
+      if (r.spFlair && (submission.link_flair_template_id === r.spFlair)) {
+        const regex = /\[(.+)\]\((https?:\/\/[^\s]+)(?: "(.+)")?\)|(https?:\/\/[^\s]+)/;
+        const detectedURL = submission.selftext.match(regex);
+        const link = detectedURL?.[2] || detectedURL?.[4];
+        if (!link) return logSP('!', 'no link detected');
+        submission.url = link;
+        submission.url_overridden_by_dest = link;
+        logSP('✔', 'flair matches, got link');
+      } else {
+        return logSP('x', 'no flair matches');
+      }
     }
     const isProcessed = await checkIfProcessed(submission);
     if (isProcessed) {

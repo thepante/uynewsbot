@@ -6,12 +6,14 @@
     {
       "id": "uruguay",
       "pollTime": 60000,
-      "limit": 20
+      "limit": 20,
+      "spFlair": "dac20d40-d87b-11e7-ac1d-0e7ea519f542"
     },
     {
       "id": "burises",
       "pollTime": 120000,
-      "limit": 20
+      "limit": 20,
+      "spFlair": "c6f8324e-38e0-11eb-8297-0ec3a2e2f175"
     },
     {
       "id": "fobaluru",
@@ -22,7 +24,8 @@
       "id": "etesuntest",
       "pollTime": 60000,
       "testMode": true,
-      "limit": 100
+      "limit": 100,
+      "spFlair": "dce65c36-3804-11e9-82f4-0e66455f6230"
     }
   ]
 }
