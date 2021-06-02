@@ -1,6 +1,12 @@
-import { checkIfProcessed, flagAsProcessed } from './botState.mjs';
-import articlePostProcessor from './articlePostProcessor.mjs';
+import path from 'path';
+import nconf from 'nconf';
 import parsePage from './PageParser/index.mjs';
+import articlePostProcessor from './articlePostProcessor.mjs';
+import { checkIfProcessed, flagAsProcessed } from './botState.mjs';
+
+nconf.file('conf', path.join(process.cwd(), '.configuration.json'));
+
+const subreddits = nconf.get('subreddits');
 
 function log(msg, submission, url=false) {
   console.log(
