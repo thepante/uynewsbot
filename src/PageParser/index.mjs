@@ -11,6 +11,7 @@ import Gubuy from './gubuy.mjs';
 import Infobaecom from './infobaecom.mjs';
 import Ladiariacomuy from './ladiariacomuy.mjs';
 import Lamananacomuy from "./lamananacomuy.mjs";
+import Lanacioncomar from './lanacioncomar.mjs';
 import Lared21comuy from "./lared21comuy.mjs";
 import Larepublicacomuy from "./larepublicacomuy.mjs";
 import Montevideocomuy from './montevideocomuy.mjs';
@@ -37,6 +38,7 @@ export default async function parsePage(url) {
         Infobaecom,
         Ladiariacomuy,
         Lamananacomuy,
+        Lanacioncomar,
         Lared21comuy,
         Larepublicacomuy,
         Montevideocomuy,
