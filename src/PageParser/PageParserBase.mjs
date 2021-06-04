@@ -2,7 +2,6 @@ import Readability from '@mozilla/readability';
 import axios from 'axios';
 import some from 'lodash/some.js';
 import h2m from 'h2m';
-import jQuery from 'jquery';
 import buildJSDOM from '../JSDOMBuilder.mjs';
 
 const bold = text => `**${text.trim()}**`;
@@ -105,10 +104,10 @@ export default class PageParserBase {
         return data;
     }
     domFilter(dom) {
-        const $ = jQuery(dom.window);
-        (this.selectorsToRemove || []).forEach(function(id) {
+        const dom = data.window.document;
+        (this.selectorsToRemove || []).forEach(function(selector) {
             try {
-                $(id).remove();
+                dom.querySelectorAll(selector).forEach(node => node.remove());
             } catch (e) {
                 console.error(e);
             }
