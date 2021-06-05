@@ -10,5 +10,8 @@ export default class Infobaecom extends PageParserBase {
         'figcaption',
         '.visual__image',
     ];
+    textsToIgnore = {
+        b: [ 'seguir leyendo:' ],
+    };
 }
 

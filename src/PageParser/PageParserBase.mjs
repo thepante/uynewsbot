@@ -23,6 +23,7 @@ function wrapBetween(input, tag) {
 export default class PageParserBase {
     static domainMatcher = [];
     selectorsToRemove = [];
+    textsToIgnore = {};
     h2mConfig = {
         converter: 'CommonMark', //CommonMark
         overides: {
@@ -103,8 +104,9 @@ export default class PageParserBase {
     afterFetchFilter(data) {
         return data;
     }
-    domFilter(dom) {
+    domFilter(data) {
         const dom = data.window.document;
+        // remove nodes with selector to ignore
         (this.selectorsToRemove || []).forEach(function(selector) {
             try {
                 dom.querySelectorAll(selector).forEach(node => node.remove());
@@ -112,7 +114,22 @@ export default class PageParserBase {
                 console.error(e);
             }
         });
-        return dom;
+        // remove nodes with text listed to ignore
+        (Object.entries(this.textsToIgnore) || []).forEach(function([ tag, texts ]) {
+            try {
+                const longestTextToIgnore = Math.max(...texts.map(text => text.length));
+                dom.querySelectorAll(tag).forEach(node => {
+                    if (node.textContent.length > longestTextToIgnore) return;
+                    const shouldIgnore = texts.some(text => {
+                        return node.textContent.trim().toLowerCase() === text.trim().toLowerCase();
+                    });
+                    shouldIgnore && node.remove();
+                });
+            } catch (e) {
+                console.error(e);
+            }
+        });
+        return data;
     }
     afterReadabilityFilter (article) {
         return article;

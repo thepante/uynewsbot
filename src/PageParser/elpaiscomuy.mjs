@@ -26,6 +26,9 @@ export default class Elpaiscomuy extends PageParserBase {
         '.image-container',
         '.module-label',
     ];
+    textsToIgnore = {
+        i: [ 'este contenido es exclusivo para nuestros suscriptores.' ],
+    };
     checkPaywalJSDOM(dom) {
         const $ = jQuery(dom.window);
         return $('.contenido-exclusivo-nota.box-ui').length > 0
