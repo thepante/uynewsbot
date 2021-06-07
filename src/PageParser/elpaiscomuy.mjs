@@ -1,8 +1,7 @@
 import PageParserBase from "./PageParserBase.mjs";
-import jQuery from "jquery";
 
 export default class Elpaiscomuy extends PageParserBase {
-    static name =  'El País';
+    static name = 'El País';
     static publisherSites = {
         'elpais.com.uy': '',
         'tvshow.com.uy': 'TVShow',
@@ -29,9 +28,9 @@ export default class Elpaiscomuy extends PageParserBase {
     textsToIgnore = {
         i: [ 'este contenido es exclusivo para nuestros suscriptores.' ],
     };
-    checkPaywalJSDOM(dom) {
-        const $ = jQuery(dom.window);
-        return $('.contenido-exclusivo-nota.box-ui').length > 0
+    checkPaywalJSDOM(data) {
+        const dom = data.window.document;
+        return dom.querySelector('.contenido-exclusivo-nota.box-ui') != undefined;
     }
     static match(pUrl) {
         const matchDomain = super.match(pUrl);

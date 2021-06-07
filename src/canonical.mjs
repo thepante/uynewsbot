@@ -1,5 +1,4 @@
 import axios from 'axios';
-import jQuery from 'jquery';
 import buildJSDOM from "./JSDOMBuilder.mjs";
 
 export async function getCanonicalURL(originalURL) {
@@ -12,9 +11,9 @@ export async function getCanonicalURL(originalURL) {
                 }
             }
         );
-        const doc = buildJSDOM(page.data);
-        const $ = jQuery(doc.window);
-        const newURL = $('[rel="canonical"]').attr('href');
+        const data = buildJSDOM(page.data);
+        const dom = data.window.document;
+        const newURL = dom.querySelector('[rel="canonical"]')?.attributes?.href.value;
 
         if (!newURL) {
             return originalURL;

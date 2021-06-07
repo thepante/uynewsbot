@@ -1,8 +1,7 @@
 import PageParserBase from "./PageParserBase.mjs";
-import jQuery from "jquery";
 
 export default class Elobservadorcomuy extends PageParserBase {
-    static name =  'El Observador';
+    static name = 'El Observador';
     static domainMatcher = [
         'elobservador.com.uy'
     ]
@@ -28,10 +27,10 @@ export default class Elobservadorcomuy extends PageParserBase {
         '.link_a_nota_propia',
         '.nota-propia',
     ];
-    checkPaywalJSDOM(dom) {
-        const $ = jQuery(dom.window);
-        let tags = $('meta[name="cXenseParse:ohs-tag"]').attr('content');
-        tags += $('meta[name="cXenseParse:ohs-tiponota"]').attr('content');
+    checkPaywalJSDOM(data) {
+        const dom = data.window.document;
+        const selectors = 'meta[name="cXenseParse:ohs-tag"], meta[name="cXenseParse:ohs-tiponota"]';
+        const tags = Array.from(dom.querySelectorAll(selectors)).map(node => node?.attributes?.content?.value).toString();
         return tags.match(/member/i) != undefined;
     }
 }
