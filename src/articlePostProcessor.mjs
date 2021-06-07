@@ -27,7 +27,7 @@ function buildHeaderPostTitle(article, content) {
   const subsiteName = article.subsiteName;
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
   const readTime = calcReadingTime(content);
-  const authorIsAPerson = byAuthor && byAuthor.toLowerCase() !== siteName.toLowerCase() && byAuthor !== article.altName?.toLowerCase();
+  const authorIsAPerson = byAuthor && byAuthor.toLowerCase() !== siteName.toLowerCase() && byAuthor.toLowerCase() !== article.altName?.toLowerCase();
 
   const authorName = authorIsAPerson ? `✎ ${byAuthor} | ` : '';
   siteName = (subsiteName ? `${subsiteName.trim()} · ` : '') + siteName;
@@ -36,7 +36,7 @@ function buildHeaderPostTitle(article, content) {
 }
 
 function getPaywallNotice(siteName) {
-  let text = `\n\n> ⚠️ Se detectó que se trata de una publicación de acceso exclusivo para suscriptores pagos a ${siteName}. `;
+  let text = `\n\n> ⚠️ Se detectó que se trata de una publicación de acceso exclusivo para suscriptores pagos de ${siteName}. `;
   text += 'La restricción no se puede evitar, y este humilde canillita no tiene cuentas pagas.\n';
   text += '> \n > El texto visible públicamente es el mencionado anteriormente.\n\n---';
   return text;
