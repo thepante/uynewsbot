@@ -64,10 +64,15 @@ export default async function processRedditPost(submission) {
       return;
     }
 
-    const finalTextComment = articlePostProcessor(pageParserResult);
+    const commentsToMake = articlePostProcessor(pageParserResult);
+    let parent = submission;
 
-    await submission.reply(finalTextComment);
-    log('Processed', submission, true);
+    for (const comment of commentsToMake) {
+      parent = await parent.reply(comment);
+      await new Promise(resolve => setTimeout(resolve, 10_000));
+    }
+
+    log(`Processed${commentsToMake.length > 1 ? ` (${commentsToMake.length} comments)` : ''}`, submission, true);
     await flagAsProcessed(submission);
 
   } catch(err) {

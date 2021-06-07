@@ -1,7 +1,18 @@
 import stripHtml from 'string-strip-html';
 
 const MAX_LENGTH = 9200;
-const truncateContent = (input) => input.length > MAX_LENGTH ? `${input.substring(0, MAX_LENGTH)}...(Truncado)` : input;
+const infoLink = process.env.INFOLINK ? `[^(**bot info**)](${process.env.INFOLINK})` : '';
+
+function getSplittedContent(content) {
+  const cutsNeeded = Math.ceil(content.length / MAX_LENGTH);
+  let parts = [];
+  for (let i = 0; i < cutsNeeded; i++) {
+    const extract = content.slice(MAX_LENGTH * i, MAX_LENGTH * (i + 1));
+    parts.push(extract);
+  }
+  return parts;
+};
+
 
 function sanitizeTitleLine(pInput) {
   if (typeof pInput !== 'string') return '';
@@ -22,11 +33,11 @@ function buildTitleLink(article) {
   return '#### [' + title + '](' + article.url + ')\n\n';
 }
 
-function buildHeaderPostTitle(article, content) {
+function buildHeaderPostTitle(article) {
   let siteName = article.siteName.trim();
   const subsiteName = article.subsiteName;
   const byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
-  const readTime = calcReadingTime(content);
+  const readTime = calcReadingTime(article.contentAsMd);
   const authorIsAPerson = byAuthor && byAuthor.toLowerCase() !== siteName.toLowerCase() && byAuthor.toLowerCase() !== article.altName?.toLowerCase();
 
   const authorName = authorIsAPerson ? `✎ ${byAuthor} | ` : '';
@@ -43,17 +54,34 @@ function getPaywallNotice(siteName) {
 }
 
 export default function articlePostProcessor(article) {
-  const infoLink = process.env.INFOLINK ? `[^(**bot info**)](${process.env.INFOLINK})` : '';
-  const content = truncateContent(article.contentAsMd);
-  let finalContent = buildTitleLink(article);
-  finalContent += buildHeaderPostTitle(article, content);
-  finalContent += content;
-  finalContent += '\n\n___';
-  if (article.paywallDetected) {
-    finalContent += getPaywallNotice(article.siteName);
-  }
-  finalContent += `\n\n${infoLink}^( ${infoLink ? '|' : 'bot'} v${process.env.npm_package_version} | Snapshot: ${article.dateTime})`;
+  const parts = getSplittedContent(article.contentAsMd);
+  const ellipsis = '[...]';
+  const continueText = ellipsis + '\n\n*Continúa en las respuestas ⤵*';
+  let comments = [];
 
-  return finalContent;
+  for (let i = 0; i < parts.length; i++) {
+    let thisComment = '';
+
+    // only first comment contains header
+    if (i === 0) {
+      thisComment += buildTitleLink(article);
+      thisComment += buildHeaderPostTitle(article);
+      thisComment += parts[0];
+      thisComment += parts.length > 1 ? continueText : '';
+      if (article.paywallDetected) {
+        thisComment += getPaywallNotice(article.siteName);
+      }
+    } else {
+      thisComment += ellipsis;
+      thisComment += parts[i];
+      thisComment += !!parts[i + 1] ? continueText : '';
+    }
+    thisComment += '\n\n---\n\n';
+    thisComment += `${infoLink}^( ${infoLink ? '|' : 'bot'} v${process.env.npm_package_version} | Snapshot: ${article.dateTime})`;
+
+    comments.push(thisComment);
+  };
+
+  return comments;
 }
 
