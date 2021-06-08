@@ -12,5 +12,8 @@ export default class Gubuy extends PageParserBase {
     '.lista-documento-fecha',
     '.fecha-destacada',
   ];
+  textsToIgnore = {
+    span: [ 'detalle personas fallecidas' ],
+  };
 }
 
