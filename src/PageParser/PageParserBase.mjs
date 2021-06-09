@@ -13,7 +13,7 @@ const boldTitle = text => `\n${bold(text)}\n\n`;
 // without adding a space before them. But also keep spaces when should
 function wrapBetween(input, tag) {
     let text = input.trim();
-    if (text === '.') return input;
+    if (text.match(/^\.|\s$/) || !text) return input;
     let md = tag + text + tag;
     if (input.match(/^\s/)) md = ' ' + md;
     if (input.match(/\s$/)) md = md + ' ';
