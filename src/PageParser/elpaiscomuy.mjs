@@ -2,6 +2,7 @@ import PageParserBase from "./PageParserBase.mjs";
 
 export default class Elpaiscomuy extends PageParserBase {
     static name = 'El País';
+    static altName = 'ElPais';
     static publisherSites = {
         'elpais.com.uy': '',
         'tvshow.com.uy': 'TVShow',
