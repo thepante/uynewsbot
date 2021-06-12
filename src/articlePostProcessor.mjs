@@ -1,6 +1,6 @@
 import stripHtml from 'string-strip-html';
 
-const MAX_LENGTH = 9200;
+const MAX_LENGTH = 9000;
 const infoLink = process.env.INFOLINK ? `[^(**bot info**)](${process.env.INFOLINK})` : '';
 
 function getSplittedContent(content) {
@@ -9,6 +9,17 @@ function getSplittedContent(content) {
   for (let i = 0; i < cutsNeeded; i++) {
     const extract = content.slice(MAX_LENGTH * i, MAX_LENGTH * (i + 1));
     parts.push(extract);
+  }
+  // join last part with its previous, if its too
+  // short to consider to be another whole comment
+  if (parts.length > 1) {
+    const charsToAcceptJoin = 600;
+    const last = parts.length - 1;
+
+    if (parts[last].length < charsToAcceptJoin) {
+      parts[last-1] += parts[last];
+      parts.splice(last, 1);
+    }
   }
   return parts;
 };
