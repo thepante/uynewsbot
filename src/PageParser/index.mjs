@@ -1,6 +1,7 @@
 import Bbccom from './bbccom.mjs';
 import Brechacomuy from './brechacomuy.mjs';
 import Busquedacomuy from './busquedacomuy.mjs';
+import Carve850comuy from './carve850comuy.mjs';
 import Cientoochentacomuy from './180comuy.mjs';
 import Diariocambiocomuy from './diariocambiocomuy.mjs';
 import Dwcom from './dwcom.mjs';
@@ -29,6 +30,7 @@ export default async function parsePage(url) {
         Bbccom,
         Brechacomuy,
         Busquedacomuy,
+        Carve850comuy,
         Cientoochentacomuy,
         Diariocambiocomuy,
         Dwcom,
