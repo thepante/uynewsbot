@@ -12,5 +12,6 @@ export default class Ladiariacomuy extends PageParserBase {
         '.ld-subscribe-box-wrap',
         '.article-date-author',
         'figcaption',
+        '.ld-audio',
     ];
 }
