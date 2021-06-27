@@ -54,6 +54,7 @@ registerClients();
 // API
 const app = express();
 app.get("/", (req, res) => res.sendStatus(200));
-app.post("/scan/:submission", (req, res) => scanSubmission(req, res, snoowrap));
+app.get("/scan/:subreddit/:submission", (req, res) => scanSubmission(req, res, snoowrap));
+app.get("/*", (req, res) => res.sendStatus(404));
 app.listen(process.env.PORT);
 
