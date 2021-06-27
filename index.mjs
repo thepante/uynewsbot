@@ -4,6 +4,7 @@ import Snoowrap from 'snoowrap';
 import express from 'express';
 
 import processRedditPost from './src/processRedditPost.mjs';
+import { scanSubmission } from './src/requestActions.mjs';
 
 nconf.file('conf', '.configuration.json');
 
@@ -50,8 +51,9 @@ async function registerClients() {
 registerClients();
 
 
-// for online status tracking
+// API
 const app = express();
 app.get("/", (req, res) => res.sendStatus(200));
+app.post("/scan/:submission", (req, res) => scanSubmission(req, res, snoowrap));
 app.listen(process.env.PORT);
 
