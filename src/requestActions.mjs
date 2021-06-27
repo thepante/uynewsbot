@@ -29,7 +29,7 @@ export async function scanSubmission(req, res, snoowrap) {
                 console.log('Manual scan request → subreddit does not match:', r, id);
                 return res.sendStatus(400);
             }
-            await processRedditPost(submission);
+            await processRedditPost(submission, true);
             return res.sendStatus(200);
         } else {
             const ip = req.headers['x-forwarded-for'] || req.socket.remoteAddress || null;
