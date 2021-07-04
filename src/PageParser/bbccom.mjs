@@ -18,5 +18,7 @@ export default class Bbccom extends PageParserBase {
         '.bbc-cdrraw',
         'figcaption',
         'time',
+        'copyright__text',
+        'drop-capped--worklife',
     ];
 }
