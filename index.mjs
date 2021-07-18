@@ -35,7 +35,7 @@ function registerClient(clientConfig) {
 
 async function registerClients() {
   const clients = nconf.get('subreddits');
-  const finalClients = isTestMode ? clients.filter(client => client.testMode === true) : clients;
+  const finalClients = clients.filter(client => isTestMode == !!client.testMode);
   const delayBetweenRegistrations = 60000 / finalClients.length;
 
   for (const client of finalClients) {
