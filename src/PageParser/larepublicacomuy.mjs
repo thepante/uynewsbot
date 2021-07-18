@@ -13,6 +13,8 @@ export default class Larepublicacomuy extends PageParserBase {
         '.sidebar',
         '.post-meta-wrap',
         '.post-share',
-        'figure'
+        'figure',
+        '#posts-small-heading',
+        '#posts-small-heading + .blog-container',
     ];
 }
