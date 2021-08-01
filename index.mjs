@@ -8,7 +8,7 @@ import { scanSubmission } from './src/requestActions.mjs';
 
 nconf.file('conf', '.configuration.json');
 
-console.log('Env:', process.env.ENVIRONMENT);
+console.log('Env:', process.env.ENVIRONMENT, "| Port:", process.env.PORT);
 
 const ua = nconf.get('bot:userAgent');
 const userAgent = ua.replace('@version@', process.env.npm_package_version);
@@ -54,7 +54,7 @@ registerClients();
 // API
 const app = express();
 app.get("/", (req, res) => res.sendStatus(200));
-app.get("/scan/:subreddit/:submission", (req, res) => scanSubmission(req, res, snoowrap));
+app.get("/scan", (req, res) => scanSubmission(req, res, snoowrap));
 app.get("/*", (req, res) => res.sendStatus(404));
 app.listen(process.env.PORT);
 

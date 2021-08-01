@@ -2,13 +2,11 @@ import processRedditPost from './processRedditPost.mjs';
 
 export async function scanSubmission(req, res, snoowrap) {
     try {
-        const r = req.params.subreddit;
-        const id = req.params.submission;
-        const basicAuth = req.headers.authorization;
+        const { secret, subreddit, id } = req.headers;
 
-        if (!basicAuth.match(/^basic\s/i)) {
-            console.log('Manual scan request → invalid auth type');
-            return res.sendStatus(401);
+        if (!secret || !subreddit || !id) {
+            console.log('Manual scan request → invalid headers');
+            return res.sendStatus(400);
         };
 
         if (id.length !== 6) {
@@ -16,17 +14,12 @@ export async function scanSubmission(req, res, snoowrap) {
             return res.sendStatus(400);
         }
 
-        const data = basicAuth.replace(/^Basic\s/, '').replace(/\s/g, '');
-        const buff = new Buffer.from(data, 'base64');
-        const auth = buff.toString('ascii');
-        const valid = process.env.CLIENTID + ':' + process.env.CLIENTSECRET;
-
-        if (auth === valid) {
-            console.log('Manual scan request →', r, id);
+        if (secret === process.env.CLIENTSECRET) {
+            console.log('Manual scan request →', subreddit, id);
             const submission = await snoowrap.getSubmission(id).fetch();
-            const subreddit = submission.subreddit.display_name;
-            if (r !== subreddit) {
-                console.log('Manual scan request → subreddit does not match:', r, id);
+            const r = submission.subreddit.display_name;
+            if (subreddit !== r) {
+                console.log('Manual scan request → subreddit does not match:', subreddit, id);
                 return res.sendStatus(400);
             }
             await processRedditPost(submission, true);
