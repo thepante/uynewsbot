@@ -8,10 +8,11 @@ import { scanSubmission } from './src/requestActions.mjs';
 
 nconf.file('conf', '.configuration.json');
 
-console.log('Env:', process.env.ENVIRONMENT, "| Port:", process.env.PORT);
-
 const ua = nconf.get('bot:userAgent');
 const userAgent = ua.replace('@version@', process.env.npm_package_version);
+
+console.log('Env:', process.env.ENVIRONMENT, "| Port:", process.env.PORT);
+console.log('UA:', userAgent);
 
 const snoowrap = new Snoowrap({
      userAgent: userAgent,

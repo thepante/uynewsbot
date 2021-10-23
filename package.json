@@ -5,8 +5,10 @@
   "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.mjs",
-    "pm2": "pm2 start index.mjs --no-daemon"
+    "node": "node index.mjs",
+    "pm2": "pm2 start index.mjs --no-daemon",
+    "start": "pm2 start index.mjs --time",
+    "restart": "pm2 stop index && npm run start"
   },
   "keywords": [],
   "author": "",
