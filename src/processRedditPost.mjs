@@ -26,7 +26,7 @@ export default async function processRedditPost(submission, force=false) {
       const r = subreddits.filter(sub => sub.id.toLowerCase() === rName)[0];
 
       if (r.spFlair && (submission.link_flair_template_id === r.spFlair 
-        || (r.spFlair.isArray() && r.spFlair.includes(submission.link_flair_template_id) )) ) {
+        || (typeof r.spFlair == 'object' && r.spFlair.includes(submission.link_flair_template_id) )) ) {
         const regex = /(.+)\((https?:\/\/[^\s]+)(?: "(.+)")?\)|(https?:\/\/[^\s]+)/;
         const detectedURL = submission.selftext.match(regex);
         const link = detectedURL?.[2] || detectedURL?.[4];
