@@ -7,7 +7,10 @@
       "id": "uruguay",
       "pollTime": 60000,
       "limit": 20,
-      "spFlair": "dac20d40-d87b-11e7-ac1d-0e7ea519f542"
+      "spFlair": [
+        "dac20d40-d87b-11e7-ac1d-0e7ea519f542",
+        "a5c1a07c-be48-11eb-96b4-0e852c2c06bf"
+      ]
     },
     {
       "id": "burises",
