@@ -24,6 +24,11 @@
       "limit": 20
     },
     {
+      "id": "charruadevs",
+      "pollTime": 120000,
+      "limit": 20
+    },
+    {
       "id": "etesuntest",
       "pollTime": 60000,
       "testMode": true,
