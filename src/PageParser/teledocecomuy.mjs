@@ -17,12 +17,4 @@ export default class Teledocecom extends PageParserBase {
         '.sticky-footer',
         '.site-footer'
     ];
-    static match(pUrl) {
-        const matchDomain = super.match(pUrl);
-        if (!matchDomain) {
-            return false;
-        }
-        const url = new URL(pUrl);
-        return url.pathname.indexOf('/telemundo/') !== -1;
-    }
 }
