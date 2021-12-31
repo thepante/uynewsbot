@@ -26,6 +26,9 @@ export default class Elobservadorcomuy extends PageParserBase {
         '.epigrafe',
         '.link_a_nota_propia',
         '.nota-propia',
+        '.contenedor > .volanta_key',
+        '.item.tiempo',
+        '.contSlider',
     ];
     checkPaywalJSDOM(data) {
         const dom = data.window.document;
