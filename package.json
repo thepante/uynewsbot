@@ -1,14 +1,14 @@
 {
   "name": "canillita",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "",
   "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "node": "node index.mjs",
-    "pm2": "pm2 start index.mjs --no-daemon",
-    "start": "pm2 start index.mjs --time",
-    "restart": "pm2 stop index && npm run start"
+    "pm2": "pm2 start index.mjs --no-daemon --name canillita",
+    "start": "pm2 start index.mjs --time --name canillita",
+    "restart": "pm2 stop canillita && npm run start"
   },
   "keywords": [],
   "author": "",
