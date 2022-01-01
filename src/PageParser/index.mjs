@@ -6,6 +6,7 @@ import Carve850comuy from './carve850comuy.mjs';
 import Cientoochentacomuy from './180comuy.mjs';
 import Diariocambiocomuy from './diariocambiocomuy.mjs';
 import Dwcom from './dwcom.mjs';
+import Efecom from './efecom.mjs';
 import Elcascotenewscom from "./elcascotenewscom.mjs";
 import Elobservadorcomuy from './elobservadorcomuy.mjs';
 import Elpaiscomuy from './elpaiscomuy.mjs';
@@ -36,6 +37,7 @@ export default async function parsePage(url) {
         Cientoochentacomuy,
         Diariocambiocomuy,
         Dwcom,
+        Efecom,
         Elcascotenewscom,
         Elobservadorcomuy,
         Elpaiscomuy,

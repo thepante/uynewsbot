@@ -32,7 +32,7 @@
       "id": "etesuntest",
       "pollTime": 60000,
       "testMode": true,
-      "limit": 100,
+      "limit": 20,
       "spFlair": "dce65c36-3804-11e9-82f4-0e66455f6230"
     }
   ]

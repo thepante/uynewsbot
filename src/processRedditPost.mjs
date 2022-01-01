@@ -52,7 +52,7 @@ export default async function processRedditPost(submission, force=false) {
     const postUrl = submission.url_overridden_by_dest;
 
     if (postUrl.match(/.*\.pdf.*/i)) {
-      log('Error → detected as .PDF link', submission, true);
+      log('Error ⇢ detected .PDF link', submission, true);
       return;
     }
 
