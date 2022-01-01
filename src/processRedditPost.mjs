@@ -8,20 +8,16 @@ nconf.file('conf', path.join(process.cwd(), '.configuration.json'));
 
 const subreddits = nconf.get('subreddits');
 
-function log(msg, submission, url=false) {
-  console.log(
-    msg,
-    submission.subreddit_name_prefixed,
-    ':',
-    submission.id,
-    url ? '- ' + submission.url_overridden_by_dest : ''
-  )
+function log(msg, submission, url=false, details=false) {
+  console.log(`[${submission.id}] [${submission.subreddit_name_prefixed}] ${msg}${details ? (' ⇢ ' + details) : ''}`);
+  if (url)
+    console.log(` ⤷ ${submission.url_overridden_by_dest}`);
 }
 
 export default async function processRedditPost(submission, force=false) {
   try {
     if (submission.is_self) {
-      const logSP = (symbol, msg) => log(`[${symbol}] Submission is self post -> ${msg} -`, submission);
+      const logSP = (symbol, msg) => log(`[${symbol}] Self post ⇢ ${msg}`, submission);
       const rName = submission.subreddit.display_name.toLowerCase();
       const r = subreddits.filter(sub => sub.id.toLowerCase() === rName)[0];
 
@@ -30,12 +26,13 @@ export default async function processRedditPost(submission, force=false) {
         const regex = /(.+)\((https?:\/\/[^\s]+)(?: "(.+)")?\)|(https?:\/\/[^\s]+)/;
         const detectedURL = submission.selftext.match(regex);
         const link = detectedURL?.[2] || detectedURL?.[4];
-        if (!link) return logSP('!', 'no link detected');
+        if (!link)
+          return logSP('!', 'No link detected');
         submission.url = link;
         submission.url_overridden_by_dest = link;
-        logSP('✔', 'flair matches, got link');
+        logSP('✔', 'Flair matches ⇢ Got link');
       } else {
-        return logSP('x', 'no flair matches');
+        return logSP('x', 'No flair matches');
       }
     }
     const isProcessed = await checkIfProcessed(submission);
@@ -55,13 +52,13 @@ export default async function processRedditPost(submission, force=false) {
     const postUrl = submission.url_overridden_by_dest;
 
     if (postUrl.match(/.*\.pdf.*/i)) {
-      console.log('Error -> link detected as .pdf', submission.id, postUrl);
+      log('Error → detected as .PDF link', submission, true);
       return;
     }
 
     const pageParserResult = await parsePage(postUrl);
     if (!pageParserResult.success) {
-      console.log('Error in process', submission.id, postUrl, pageParserResult.error);
+      log('Error in process', submission, true, pageParserResult.error);
       return;
     }
 

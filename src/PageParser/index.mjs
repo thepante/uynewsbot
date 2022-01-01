@@ -59,18 +59,16 @@ export default async function parsePage(url) {
 
     const ProcessorClass = _.first(ProcessorClasses);
     if (!ProcessorClass) {
-        return PageParserBase.createError('no matches');
+        return PageParserBase.createError('No domain matches');
     }
 
     const finalUrl = await getCanonicalURL(url);
     if (url !== finalUrl) {
-        console.log(
-            'canonicalizing',
-            'Original',
-            url,
-            'New',
-            finalUrl
-        );
+        console.log('--------');
+        console.log(' ↯ Canonicalizing:');
+        console.log(` O ⇢ ${url}`);
+        console.log(` N ⇢ ${finalUrl}`);
+        console.log('--------');
     }
 
     return new ProcessorClass(finalUrl).fetch();
