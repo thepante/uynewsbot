@@ -6,9 +6,9 @@ function log(id, subreddit, msg, details=false) {
 
 export async function scanSubmission(req, res, snoowrap) {
     try {
-        const { secret, subreddit, id } = req.headers;
+        const { key, subreddit, id } = req.headers;
 
-        if (!secret || !subreddit || !id) {
+        if (!key || !subreddit || !id) {
             log('API', '******', 'Manual scan request', 'Invalid headers');
             return res.sendStatus(400);
         };
@@ -18,7 +18,7 @@ export async function scanSubmission(req, res, snoowrap) {
             return res.sendStatus(400);
         }
 
-        if (secret === process.env.CLIENTSECRET) {
+        if (key === process.env.CANILLITAKEY) {
             log(id, subreddit, 'Manual scan request');
             const submission = await snoowrap.getSubmission(id).fetch();
             const r = submission.subreddit.display_name;
