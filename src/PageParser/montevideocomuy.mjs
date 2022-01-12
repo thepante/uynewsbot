@@ -17,5 +17,6 @@ export default class Montevideocomuy extends PageParserBase {
         '.pie_arriba',
         '.pie_abajo',
         '.autor',
+        'picture + .caption',
     ]
 }
