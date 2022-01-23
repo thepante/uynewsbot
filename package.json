@@ -7,8 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "node": "node index.mjs",
     "pm2": "pm2 start index.mjs --no-daemon --name canillita",
-    "start": "pm2 start index.mjs --time --name canillita",
-    "restart": "pm2 stop canillita && npm run start"
+    "start": "pm2 start index.mjs --time --name canillita --update-env",
+    "restart": "pm2 restart canillita --update-env"
   },
   "keywords": [],
   "author": "",
