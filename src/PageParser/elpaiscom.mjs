@@ -8,7 +8,12 @@ export default class Elpaiscom extends PageParserBase {
     selectorsToRemove = [
       '#ctn_freemium_article',
       '[data-ctn-subscription=true]',
+      'figure',
+      'figcaption',
     ];
+    textsToIgnore = {
+        header: [ 'Más información' ],
+    };
     checkPaywalJSDOM(data) {
         const dom = data.window.document;
         return dom.getElementById('ctn_freemium_article') != undefined;
