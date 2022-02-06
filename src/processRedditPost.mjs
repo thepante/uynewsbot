@@ -49,7 +49,7 @@ export default async function processRedditPost(submission, force=false) {
       log('Submission is not a link', submission);
     }
 
-    const postUrl = submission.url_overridden_by_dest;
+    const postUrl = submission.url_overridden_by_dest.replace('www.google.com/amp/s/', '');
 
     if (postUrl.match(/.*\.pdf.*/i)) {
       log('Ignored: PDF link', submission, true);
