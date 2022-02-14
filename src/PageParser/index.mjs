@@ -22,6 +22,7 @@ import Larepublicacomuy from "./larepublicacomuy.mjs";
 import M24comuy from './m24comuy.mjs';
 import Montevideocomuy from './montevideocomuy.mjs';
 import PageParserBase from "./PageParserBase.mjs";
+import Semanariovocescom from './semanariovocescom.mjs';
 import Subrayadocomuy from "./subrayadocomuy.mjs";
 import Teledocecomuy from "./teledocecomuy.mjs";
 import Telenochecomuy from './telenochecomuy.mjs';
@@ -54,6 +55,7 @@ export default async function parsePage(url) {
         Larepublicacomuy,
         M24comuy,
         Montevideocomuy,
+        Semanariovocescom,
         Subrayadocomuy,
         Teledocecomuy,
         Telenochecomuy,
