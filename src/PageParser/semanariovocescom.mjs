@@ -11,5 +11,6 @@ export default class Semanariovocescom extends PageParserBase {
       '.sd-sharing-enabled + .code-block',
       '.sharedaddy',
       '.sd-sharing-enabled',
+      '.cactus-author-post',
     ];
 }
