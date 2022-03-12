@@ -8,5 +8,7 @@ export default class Telenochecomuy extends PageParserBase {
   ]
   selectorsToRemove = [
     '.date',
+    '.article-body__info-wrapper',
+    '.type_imagen',
   ];
 }

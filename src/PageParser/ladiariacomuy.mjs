@@ -13,5 +13,6 @@ export default class Ladiariacomuy extends PageParserBase {
         '.article-date-author',
         'figcaption',
         '.ld-audio',
+        '.reading-time',
     ];
 }
