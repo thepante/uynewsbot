@@ -15,6 +15,6 @@ export default class Busquedacomuy extends PageParserBase {
     ];
     checkPaywalJSDOM(data) {
         const dom = data.window.document;
-        return dom.querySelector('.plan_suscriptores').textContent?.match('nota es exclusiva') != undefined;
+        return dom.querySelector('.plan_suscriptores')?.textContent?.match('nota es exclusiva') != undefined;
     }
 }
