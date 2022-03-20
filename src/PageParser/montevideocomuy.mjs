@@ -10,6 +10,7 @@ export default class Montevideocomuy extends PageParserBase {
         'futbol.com.uy': 'Fútbol UY',
         'galeria.montevideo.com.uy': 'Galería',
         'airbag.uy': 'Airbag',
+        'latidobeat.uy': 'Beat',
     };
     static domainMatcher = Object.keys(this.publisherSites);
     selectorsToRemove = [
