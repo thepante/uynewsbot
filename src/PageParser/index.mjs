@@ -1,4 +1,5 @@
 import Bbccom from './bbccom.mjs';
+import Bloomberglineacom from './bloomberglineacom.mjs';
 import Brechacomuy from './brechacomuy.mjs';
 import Busquedacomuy from './busquedacomuy.mjs';
 import Carasycaretascomuy from './carasycaretascomuy.mjs';
@@ -33,6 +34,7 @@ import {getCanonicalURL} from "../canonical.mjs";
 export default async function parsePage(url) {
     const processors = [
         Bbccom,
+        Bloomberglineacom,
         Brechacomuy,
         Busquedacomuy,
         Carasycaretascomuy,
