@@ -9,14 +9,24 @@
       "limit": 20,
       "spFlair": [
         "dac20d40-d87b-11e7-ac1d-0e7ea519f542",
-        "a5c1a07c-be48-11eb-96b4-0e852c2c06bf"
+        "a5c1a07c-be48-11eb-96b4-0e852c2c06bf",
+        "e9fdbea8-d87b-11e7-9021-0e7ea519f542"
       ]
     },
     {
       "id": "burises",
       "pollTime": 120000,
       "limit": 20,
-      "spFlair": "c6f8324e-38e0-11eb-8297-0ec3a2e2f175"
+      "spFlair": [
+        "c6f8324e-38e0-11eb-8297-0ec3a2e2f175",
+        "ade64302-26c1-11ec-86da-1293403680ac",
+        "cedb296a-90d0-11eb-8fdb-0ea97efce167",
+        "47948914-4473-11eb-8e55-0e370579616f",
+        "3a95eb98-38e0-11eb-a872-0e38d1a6863b",
+        "45438e16-0c60-11ec-8cf8-16fa9ef6040b",
+        "a20d11d2-e652-11eb-9a90-0e350fb41989",
+        "7f3637bc-79f4-11eb-b4f3-0e8b53ebcb6f"
+      ]
     },
     {
       "id": "fobaluru",
