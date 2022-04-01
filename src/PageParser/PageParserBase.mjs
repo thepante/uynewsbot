@@ -119,7 +119,7 @@ export default class PageParserBase {
             try {
                 const longestTextToIgnore = Math.max(...texts.map(text => text.length));
                 dom.querySelectorAll(tag).forEach(node => {
-                    if (node.textContent.length > longestTextToIgnore) return;
+                    if (node.textContent?.trim().length > longestTextToIgnore) return;
                     const shouldIgnore = texts.some(text => {
                         return node.textContent.trim().toLowerCase() === text.trim().toLowerCase();
                     });

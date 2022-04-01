@@ -1,7 +1,7 @@
 import PageParserBase from "./PageParserBase.mjs";
 
 export default class Gubuy extends PageParserBase {
-  static name = 'Gobierno del Uruguay';
+  static name = 'GUB.UY';
   static publisherSites = {
       'gub.uy': '',
       'montevideo.gub.uy': 'Montevideo',
