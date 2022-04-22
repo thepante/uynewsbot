@@ -22,7 +22,7 @@
     "jsdom": "16.5.0",
     "lodash": "4.17.21",
     "mongoose": "^5.12.11",
-    "nconf": "0.11.2",
+    "nconf": "0.11.4",
     "node-cron": "^3.0.0",
     "snoostorm": "1.5.2",
     "snoowrap": "1.22.0",
