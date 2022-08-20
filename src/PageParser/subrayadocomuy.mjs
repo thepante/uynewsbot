@@ -6,6 +6,8 @@ export default class Elpaiscomuy extends PageParserBase {
         'subrayado.com.uy'
     ]
     selectorsToRemove = [
+        '.news-headline__topic',
+        '.recommended-news',
         '.temas-rel',
         '.articles-rel',
         '.widgetContent',
