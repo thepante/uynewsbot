@@ -6,6 +6,7 @@ kill_timeout = 5
 processes = []
 
 [env]
+  NODE_ENV = "production"
   REDDITUSER="bot_canillita"
   DBNAME="processed"
   DBUSER="dbcanillita"
