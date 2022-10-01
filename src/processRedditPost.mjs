@@ -14,7 +14,7 @@ function log(msg, submission, url=false, details=false) {
     console.log(` ⤷ ${submission.url_overridden_by_dest}`);
 }
 
-export default async function processRedditPost(submission, force=false) {
+export default async function processRedditPost(submission, forced = false) {
   try {
     if (submission.is_self) {
       const logSP = (symbol, msg) => log(`[${symbol}] Self post ⇢ ${msg}`, submission);
@@ -38,7 +38,7 @@ export default async function processRedditPost(submission, force=false) {
     const isProcessed = await checkIfProcessed(submission);
     if (isProcessed) {
       log('Already processed', submission);
-      if (!force) return;
+      if (!forced) return;
     }
     // avoid TypeError [ERR_INVALID_URL] when is a crosspost starting without the domain
     if (submission.url_overridden_by_dest.match(/^\/(r|u(ser)?)\//)) {
@@ -78,7 +78,7 @@ export default async function processRedditPost(submission, force=false) {
     }
 
     log(`Processed${commentsToMake.length > 1 ? ` (${commentsToMake.length} comments)` : ''}`, submission, true);
-    if (!isProcessed && !force) {
+    if (!isProcessed) {
       await flagAsProcessed(submission);
     }
 

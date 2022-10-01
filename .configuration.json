@@ -1,6 +1,8 @@
 {
   "bot": {
-    "userAgent": "script:u/bot_canillita (news parser):v@version@ (by u/thepante)"
+    "account": "bot_canillita",
+    "accountDev": "canillita",
+    "userAgent": "script:u/@account@ (news parser):v@version@ (by u/thepante)"
   },
   "subreddits": [
     {
