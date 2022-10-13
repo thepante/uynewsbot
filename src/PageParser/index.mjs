@@ -28,6 +28,7 @@ import Semanariovocescom from './semanariovocescom.mjs';
 import Subrayadocomuy from "./subrayadocomuy.mjs";
 import Teledocecomuy from "./teledocecomuy.mjs";
 import Telenochecomuy from './telenochecomuy.mjs';
+import Yahoocom from "./yahoocom.mjs";
 import _ from 'lodash';
 import {getCanonicalURL} from "../canonical.mjs";
 
@@ -63,6 +64,7 @@ export default async function parsePage(url) {
         Subrayadocomuy,
         Teledocecomuy,
         Telenochecomuy,
+        Yahoocom,
     ];
 
     const ProcessorClasses = _.filter(processors, function(p) {
