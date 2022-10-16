@@ -5,6 +5,7 @@ import Busquedacomuy from './busquedacomuy.mjs';
 import Carasycaretascomuy from './carasycaretascomuy.mjs';
 import Carve850comuy from './carve850comuy.mjs';
 import Cientoochentacomuy from './180comuy.mjs';
+import Dailymailcouk from './dailymailcouk.mjs';
 import Derechosdigitalesorg from './derechosdigitalesorg.mjs';
 import Diariocambiocomuy from './diariocambiocomuy.mjs';
 import Dwcom from './dwcom.mjs';
@@ -42,6 +43,7 @@ export default async function parsePage(url) {
         Carasycaretascomuy,
         Carve850comuy,
         Cientoochentacomuy,
+        Dailymailcouk,
         Derechosdigitalesorg,
         Diariocambiocomuy,
         Dwcom,

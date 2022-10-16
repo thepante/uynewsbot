@@ -1,11 +1,11 @@
 {
   "name": "canillita",
-  "version": "2.5.1",
+  "version": "2.5.2",
   "description": "",
   "main": "index.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "node index.mjs",
+    "dev": "ENVIRONMENT=test node index.mjs",
     "pm2": "pm2 start index.mjs --no-daemon --name canillita",
     "start": "pm2 start index.mjs --time --name canillita --update-env",
     "restart": "pm2 restart canillita --update-env"
