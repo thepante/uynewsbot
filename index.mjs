@@ -30,7 +30,7 @@ function registerClient(clientConfig) {
 	const client = new SnooStorm.SubmissionStream(snoowrap, {
 		subreddit: clientConfig.id,
 		limit: clientConfig.limit,
-		pollTime: production && clientConfig.pollTime ? clientConfig.pollTime : 30000,
+		pollTime: production && clientConfig.pollTime ? clientConfig.pollTime : 10000,
 	});
 	client.on('item', processRedditPost);
 }

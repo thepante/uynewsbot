@@ -11,7 +11,7 @@ ENV TZ="America/Montevideo"
 COPY package*.json ./
 
 RUN npm install -g pm2
-RUN npm ci --production
+RUN npm ci --omit=dev
 
 COPY . .
 

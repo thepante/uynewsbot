@@ -42,7 +42,7 @@
     },
     {
       "id": "etesuntest",
-      "pollTime": 60000,
+      "pollTime": 20000,
       "testMode": true,
       "limit": 20,
       "spFlair": "dce65c36-3804-11e9-82f4-0e66455f6230"

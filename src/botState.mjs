@@ -20,7 +20,6 @@ const URI = `mongodb+srv://${DB.USER}:${DB.PASS}@${DB.HOST}/${DB.NAME}?retryWrit
 const mongooseOptions = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useFindAndModify: false
 }
 
 // mongodb schemas for each subreddit
