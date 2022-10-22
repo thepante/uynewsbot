@@ -5,4 +5,8 @@ export default class Mediospublicosuy extends PageParserBase {
 	static domainMatcher = [
 		'mediospublicos.uy'
 	];
+	selectorsToRemove = [
+		'.span-reading-time',
+		'.rt-reading-time',
+	];
 }

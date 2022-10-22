@@ -1,8 +1,8 @@
 import Readability from '@mozilla/readability';
-import axios from 'axios';
 import some from 'lodash/some.js';
 import h2m from 'h2m';
 import buildJSDOM from '../JSDOMBuilder.mjs';
+import { _fetch } from '../fetcher.mjs';
 
 const bold = text => `**${text.trim()}**`;
 const boldTitle = text => `\n${bold(text)}\n\n`;
@@ -138,18 +138,19 @@ export default class PageParserBase {
         return false;
     }
 
-    async fetch() {
-        const dateTime = new Date().toLocaleString('en-US', {
-          day: '2-digit',
-          month: 'short',
-          year: 'numeric',
-          hour: '2-digit',
-          minute: '2-digit',
-          hour12: false,
-          timeZone: 'America/Montevideo',
-        }) + ' UTC-3';
-        const page = await this._fetch(this._url);
-        let data;
+	async fetch() {
+		const dateTime = new Date().toLocaleString('en-US', {
+			day: '2-digit',
+			month: 'short',
+			year: 'numeric',
+			hour: '2-digit',
+			minute: '2-digit',
+			hour12: false,
+			timeZone: 'America/Montevideo',
+		}) + ' UTC-3';
+		const page = await this._fetch(this._url);
+		let data;
+
         if (!page.success) {
             return PageParserBase.createError(page.error || 'Not Parseable by readability');
         }
@@ -200,14 +201,7 @@ export default class PageParserBase {
     }
 
     async _fetch(url) {
-        const result = await axios.get(
-            url,
-            {
-                headers: {
-                    'user-agent': 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/80.2.3.6 Safari/537.36'
-                }
-            }
-        );
+		const result = await _fetch(url);
 
         if ((result.headers['content-type'] + '').indexOf('text/') === -1) {
             return {

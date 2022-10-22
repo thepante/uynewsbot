@@ -59,4 +59,3 @@ app.get("/", (req, res) => res.sendStatus(200));
 app.get("/scan", (req, res) => scanSubmission(req, res, snoowrap));
 app.get("/*", (req, res) => res.sendStatus(404));
 app.listen(process.env.PORT);
-
