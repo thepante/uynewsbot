@@ -22,6 +22,7 @@ import Lanacioncomar from './lanacioncomar.mjs';
 import Lared21comuy from "./lared21comuy.mjs";
 import Larepublicacomuy from "./larepublicacomuy.mjs";
 import M24comuy from './m24comuy.mjs';
+import Mediospublicosuy from './mediospublicosuy.mjs';
 import Mercopresscom from './mercopresscom.mjs';
 import Montevideocomuy from './montevideocomuy.mjs';
 import PageParserBase from "./PageParserBase.mjs";
@@ -60,6 +61,7 @@ export default async function parsePage(url) {
         Lared21comuy,
         Larepublicacomuy,
         M24comuy,
+        Mediospublicosuy,
         Mercopresscom,
         Montevideocomuy,
         Semanariovocescom,
