@@ -13,6 +13,7 @@ export default class Elpaiscomuy extends PageParserBase {
         '.widgetContent',
         '#comentarios',
         '.aside-section',
-        '.embed_options'
+        '.embed_options',
+		'.detail-gallery',
     ];
 }

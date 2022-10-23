@@ -14,10 +14,7 @@ export async function _fetch(url) {
 		if (!config || !config.retry)
 			return Promise.reject(err);
 
-		if (status !== 200)
-			return Promise.reject(err);
-
-		config.headers = { 'user-agent': (config.retry < retries) ? ua.alt : ua.main };
+		config.headers = { 'user-agent': ua.alt };
 		config.retry -= 1;
 
 		const delayRetryRequest = new Promise(resolve => {
@@ -29,5 +26,9 @@ export async function _fetch(url) {
 		return delayRetryRequest.then(() => axios(config));
 	});
 
-	return axios.get(url, { retry: retries, retryDelay: 2000 });
+	return axios.get(url, {
+		retry: retries, retryDelay: 2000, headers: {
+			'user-agent': ua.main,
+		},
+	});
 }
