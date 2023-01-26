@@ -18,6 +18,7 @@ export default class Elpaiscomuy extends PageParserBase {
         '.weather-header',
         '.middle-header',
         'header',
+		'figure, .figure',
         '.modules-ads-container',
         '.ads-under-header',
         '.ads-under-header',

@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-const retries = 3;
-
 const ua = {
 	main: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Googlebot/2.1; +http://www.google.com/bot.html) Chrome/80.2.3.5 Safari/537.36',
 	alt: 'Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible;) Chrome/80.2.3.5 Safari/537.36',
@@ -27,7 +25,7 @@ export async function _fetch(url) {
 	});
 
 	return axios.get(url, {
-		retry: retries, retryDelay: 2000, headers: {
+		retry: 3, retryDelay: 2000, headers: {
 			'user-agent': ua.main,
 		},
 	});

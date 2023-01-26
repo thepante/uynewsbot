@@ -168,7 +168,7 @@ export default class PageParserBase {
         const isProbablyReaderable = Readability.isProbablyReaderable(
             doc.window.document,
             {
-                minScore: 15,
+                minScore: 12,
                 minContentLength: 100
             }
         );

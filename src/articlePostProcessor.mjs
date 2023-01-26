@@ -47,6 +47,7 @@ function buildTitleLink(article) {
 function buildHeaderPostTitle(article) {
   let siteName = article.siteName.trim();
   let byAuthor = (sanitizeTitleLine(article.byline) || '').trim();
+  byAuthor = byAuthor.replace(/[\n|\r]/g, '');
   byAuthor = byAuthor.replace(/^por\s/i, '');
   const subsiteName = article.subsiteName;
   const readTime = calcReadingTime(article.contentAsMd);
