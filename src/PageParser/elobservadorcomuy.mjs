@@ -32,8 +32,6 @@ export default class Elobservadorcomuy extends PageParserBase {
     ];
     checkPaywalJSDOM(data) {
         const dom = data.window.document;
-        const selectors = 'meta[name="cXenseParse:ohs-tag"], meta[name="cXenseParse:ohs-tiponota"]';
-        const tags = Array.from(dom.querySelectorAll(selectors)).map(node => node?.attributes?.content?.value).toString();
-        return tags.match(/member/i) != undefined;
+		return dom.querySelectorAll('.member_container, .member_container_int').length > 0;
     }
 }

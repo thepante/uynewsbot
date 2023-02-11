@@ -6,6 +6,7 @@ export default class Brechacomuy extends PageParserBase {
         'brecha.com.uy'
     ]
     selectorsToRemove = [
+		'.summary > .breadcrumb',
         '.mepr-unauthorized-message',
         '.post-nav-related',
         '.articulo_categoria'
