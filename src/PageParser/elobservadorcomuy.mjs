@@ -29,6 +29,7 @@ export default class Elobservadorcomuy extends PageParserBase {
         '.contenedor > .volanta_key',
         '.item.tiempo',
         '.contSlider',
+		'footer, .footer',
     ];
     checkPaywalJSDOM(data) {
         const dom = data.window.document;
