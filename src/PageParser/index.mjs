@@ -15,6 +15,7 @@ import Elcascotenewscom from "./elcascotenewscom.mjs";
 import Elobservadorcomuy from './elobservadorcomuy.mjs';
 import Elpaiscom from './elpaiscom.mjs';
 import Elpaiscomuy from './elpaiscomuy.mjs';
+import Elpitazonet from './elpitazonet.mjs';
 import Gubuy from './gubuy.mjs';
 import Infobaecom from './infobaecom.mjs';
 import Ladiariacomuy from './ladiariacomuy.mjs';
@@ -56,6 +57,7 @@ export default async function parsePage(url) {
         Elobservadorcomuy,
         Elpaiscom,
         Elpaiscomuy,
+        Elpitazonet,
         Gubuy,
         Infobaecom,
         Ladiariacomuy,
