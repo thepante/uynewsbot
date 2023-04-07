@@ -9,6 +9,10 @@ export default class Elcascotenewscom extends PageParserBase {
         '.wp-post-author-wrap',
         '.navigation-container',
         '#secondary',
-        '.promotionspace'
+        '.promotionspace',
+		'.sharedaddy',
+		'.entry-meta',
+		'.post-navigation',
+		'h3.awpa-title',
     ];
 }
