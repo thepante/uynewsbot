@@ -22,6 +22,7 @@ import Ladiariacomuy from './ladiariacomuy.mjs';
 import Lamananacomuy from "./lamananacomuy.mjs";
 import Lanacioncomar from './lanacioncomar.mjs';
 import Lared21comuy from "./lared21comuy.mjs";
+import Larepublicaco from "./larepublicaco.mjs";
 import Larepublicacomuy from "./larepublicacomuy.mjs";
 import M24comuy from './m24comuy.mjs';
 import Mediospublicosuy from './mediospublicosuy.mjs';
@@ -64,6 +65,7 @@ export default async function parsePage(url) {
         Lamananacomuy,
         Lanacioncomar,
         Lared21comuy,
+        Larepublicaco,
         Larepublicacomuy,
         M24comuy,
         Mediospublicosuy,
