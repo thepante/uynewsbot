@@ -33,6 +33,7 @@ import Semanariovocescom from './semanariovocescom.mjs';
 import Subrayadocomuy from "./subrayadocomuy.mjs";
 import Teledocecomuy from "./teledocecomuy.mjs";
 import Telenochecomuy from './telenochecomuy.mjs';
+import Tncomar from './tncomar.mjs';
 import Vicecom from "./vicecom.mjs";
 import Yahoocom from "./yahoocom.mjs";
 import _ from 'lodash';
@@ -75,6 +76,7 @@ export default async function parsePage(url) {
         Subrayadocomuy,
         Teledocecomuy,
         Telenochecomuy,
+        Tncomar,
         Vicecom,
         Yahoocom,
     ];
