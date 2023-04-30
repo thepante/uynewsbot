@@ -6,6 +6,7 @@ import Carasycaretascomuy from './carasycaretascomuy.mjs';
 import Carve850comuy from './carve850comuy.mjs';
 import Cientoochentacomuy from './180comuy.mjs';
 import Clarincom from './clarincom.mjs';
+import Cronicasdelestecomuy from './cronicasdelestecomuy.mjs';
 import Dailymailcouk from './dailymailcouk.mjs';
 import Derechosdigitalesorg from './derechosdigitalesorg.mjs';
 import Diariocambiocomuy from './diariocambiocomuy.mjs';
@@ -49,7 +50,7 @@ export default async function parsePage(url) {
         Carasycaretascomuy,
         Carve850comuy,
         Cientoochentacomuy,
-        Clarincom,
+        Cronicasdelestecomuy,
         Dailymailcouk,
         Derechosdigitalesorg,
         Diariocambiocomuy,
