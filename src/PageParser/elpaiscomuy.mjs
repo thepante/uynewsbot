@@ -26,6 +26,7 @@ export default class Elpaiscomuy extends PageParserBase {
         '.composite-captioned-image',
         '.image-container',
         '.module-label',
+        '.ListRel-items',
     ];
     textsToIgnore = {
         i: [ 'este contenido es exclusivo para nuestros suscriptores.' ],

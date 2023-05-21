@@ -15,5 +15,7 @@ export default class Elpaiscomuy extends PageParserBase {
         '.aside-section',
         '.embed_options',
 		'.detail-gallery',
+        '#comments, .comments',
+        'h3.standard-header__title',
     ];
 }
