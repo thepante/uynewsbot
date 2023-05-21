@@ -13,6 +13,8 @@ export default class Carasycaretascomuy extends PageParserBase {
         '.article-figure',
         '.thumb-wrap',
         '.section-newsletter',
+        '.embed_cont',
+        '.type_imagen',
     ];
     checkPaywalJSDOM(data) {
         const dom = data.window.document;
