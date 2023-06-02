@@ -1,3 +1,4 @@
+import Ambitocom from './ambitocom.mjs';
 import Bbccom from './bbccom.mjs';
 import Bloomberglineacom from './bloomberglineacom.mjs';
 import Brechacomuy from './brechacomuy.mjs';
@@ -43,6 +44,7 @@ import {getCanonicalURL} from "../canonical.mjs";
 
 export default async function parsePage(url) {
     const processors = [
+        Ambitocom,
         Bbccom,
         Bloomberglineacom,
         Brechacomuy,

@@ -7,6 +7,6 @@ export default class Lared21comuy extends PageParserBase {
         'lr21.com.uy'
     ]
     selectorsToRemove = [
-
+        'figure, figcaption',
     ];
 }
