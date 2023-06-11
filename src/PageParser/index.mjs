@@ -15,6 +15,7 @@ import Dwcom from './dwcom.mjs';
 import Efecom from './efecom.mjs';
 import Elcascotenewscom from "./elcascotenewscom.mjs";
 import Elobservadorcomuy from './elobservadorcomuy.mjs';
+import Pagina12comar from "./pagina12comar.mjs";
 import Elpaiscom from './elpaiscom.mjs';
 import Elpaiscomuy from './elpaiscomuy.mjs';
 import Elpitazonet from './elpitazonet.mjs';
@@ -44,6 +45,7 @@ import {getCanonicalURL} from "../canonical.mjs";
 
 export default async function parsePage(url) {
     const processors = [
+        Pagina12comar,
         Ambitocom,
         Bbccom,
         Bloomberglineacom,
