@@ -21,7 +21,7 @@
     "h2m": "0.7.0",
     "jsdom": "16.5.0",
     "lodash": "4.17.21",
-    "mongoose": "^6.6.5",
+    "mongoose": "^6.12.0",
     "nconf": "^0.12.0",
     "node-cron": "^3.0.0",
     "snoostorm": "1.5.2",
