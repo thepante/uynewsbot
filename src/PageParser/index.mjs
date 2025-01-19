@@ -96,6 +96,8 @@ export default async function parsePage(url) {
     }
 
     const finalUrl = await getCanonicalURL(url);
+    // const finalUrl = ProcessorClass.avoidCanonical ? url : await getCanonicalURL(url);
+    const finalUrl = url;
     if (url !== finalUrl) {
         console.log('--------');
         console.log(' ↯ Canonicalizing:');
