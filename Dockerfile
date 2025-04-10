@@ -9,7 +9,7 @@ EXPOSE 3000/tcp
 COPY package*.json ./
 
 RUN apk add --no-cache tzdata
-RUN bun install --production
+RUN bun install # --production
 
 COPY . .
 
