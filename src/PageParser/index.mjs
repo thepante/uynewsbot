@@ -95,7 +95,7 @@ export default async function parsePage(url) {
         return PageParserBase.createError('No domain matches');
     }
 
-    const finalUrl = await getCanonicalURL(url);
+    ProcessorClass.avoidCanonical = true;
     // const finalUrl = ProcessorClass.avoidCanonical ? url : await getCanonicalURL(url);
     const finalUrl = url;
     if (url !== finalUrl) {

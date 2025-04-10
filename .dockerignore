@@ -8,3 +8,4 @@ node_modules
 *.md
 *.bk
 .env
+.package-lock.json

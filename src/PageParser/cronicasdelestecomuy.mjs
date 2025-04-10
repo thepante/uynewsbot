@@ -6,6 +6,8 @@ export default class Cronicasdelestecomuy extends PageParserBase {
         'cronicasdeleste.com.uy'
     ]
     selectorsToRemove = [
+		'figure',
+		'.entry-thumbnail',
 		'.post_commentbox',
 		'#BannerGrupo',
     ]
