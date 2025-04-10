@@ -9,9 +9,8 @@ EXPOSE 3000/tcp
 COPY package*.json ./
 
 RUN apk add --no-cache tzdata
-RUN bun i --production
+RUN bun install --production
 
 COPY . .
 
-USER bun
 ENTRYPOINT [ "bun", "index.mjs" ]
