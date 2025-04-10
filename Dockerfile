@@ -1,18 +1,17 @@
-FROM node:16-alpine
+FROM oven/bun:alpine
+WORKDIR /usr/src/app
 
-WORKDIR /opt/app
-
-ENV PORT=8080
-EXPOSE 8080
-
-RUN apk add --no-cache tzdata
 ENV TZ="America/Montevideo"
+ENV PORT=3000
+
+EXPOSE 3000/tcp
 
 COPY package*.json ./
 
-RUN npm install -g pm2
-RUN npm ci --omit=dev
+RUN apk add --no-cache tzdata
+RUN bun i --production
 
 COPY . .
 
-CMD [ "npm", "run", "pm2" ]
+USER bun
+ENTRYPOINT [ "bun", "index.mjs" ]
