@@ -2,6 +2,7 @@ import nconf from 'nconf';
 import SnooStorm from 'snoostorm';
 import Snoowrap from 'snoowrap';
 import express from 'express';
+import pkg from "./package.json";
 
 import processRedditPost from './src/processRedditPost.mjs';
 import { scanSubmission } from './src/requestActions.mjs';
@@ -12,7 +13,7 @@ const production = process.env.ENVIRONMENT?.toLocaleLowerCase() === 'production'
 
 let userAgent = nconf.get('bot:userAgent');
 userAgent = userAgent.replace('@account@', nconf.get(production ? 'bot:account' : 'bot:accountDev'));
-userAgent = userAgent.replace('@version@', process.env.npm_package_version + (!production ? ' DEV TEST' : ''));
+userAgent = userAgent.replace('@version@', (pkg?.version || process.env.npm_package_version) + (!production ? ' DEV TEST' : ''));
 
 console.log('Env:', process.env.ENVIRONMENT, "| Port:", process.env.PORT);
 console.log('UA:', userAgent);

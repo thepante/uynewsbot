@@ -1,4 +1,5 @@
 import stripHtml from 'string-strip-html';
+import pkg from '../package.json';
 
 const MAX_LENGTH = 9000;
 const infoLink = process.env.INFOLINK ? `[^(**bot info**)](${process.env.INFOLINK})` : '';
