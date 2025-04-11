@@ -91,7 +91,7 @@ export default function articlePostProcessor(article) {
       thisComment += !!parts[i + 1] ? continueText : '';
     }
     thisComment += '\n\n---\n\n';
-    thisComment += `${infoLink}^( ${infoLink ? '|' : 'bot'} v${process.env.npm_package_version} | Snapshot: ${article.dateTime})`;
+    thisComment += `${infoLink}^( ${infoLink ? '|' : 'bot'} v${pkg?.version} | Snapshot: ${article.dateTime})`;
 
     comments.push(thisComment);
   };
