@@ -30,6 +30,16 @@ export default class Elobservadorcomuy extends PageParserBase {
         '.item.tiempo',
         '.contSlider',
 		'footer, .footer',
+        '.detail-gallery',
+        '.read-more',
+        '.article-topics-container',
+        '.news-section_vertical-ranking-container',
+        '.banner-sticky-container',
+        '.news-article_small',
+        '.main_region-standard-header',
+        '.header-extra-container',
+        '.embed_cont.type_imagen',
+        '.detail-gallery__slide-wrapper',
     ];
     checkPaywalJSDOM(data) {
         const dom = data.window.document;

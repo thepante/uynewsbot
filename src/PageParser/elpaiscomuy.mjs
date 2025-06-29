@@ -27,6 +27,7 @@ export default class Elpaiscomuy extends PageParserBase {
         '.image-container',
         '.module-label',
         '.ListRel-items',
+        '.ReportErrorBelow-wrapper',
     ];
     textsToIgnore = {
         i: [ 'este contenido es exclusivo para nuestros suscriptores.' ],
