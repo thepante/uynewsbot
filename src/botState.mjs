@@ -26,6 +26,7 @@ const mongooseOptions = {
 let collections = {};
 
 // db connection
+mongoose.set('strictQuery', false);
 mongoose.connect(URI, mongooseOptions)
   .then(() => console.log('Connected to db ->', DB.HOST))
   .catch(err => console.log('db connection error:', err));
