@@ -19,11 +19,11 @@ console.log('Env:', process.env.ENVIRONMENT, "| Port:", process.env.PORT);
 console.log('UA:', userAgent);
 
 const snoowrap = new Snoowrap({
-	userAgent: userAgent,
-	 clientId: process.env.CLIENTID,
-	clientSecret: process.env.CLIENTSECRET,
-	 username: process.env.REDDITUSER,
-	 password: process.env.REDDITPASS,
+	userAgent: process.env.REDDIT_UA,
+	clientId: process.env.REDDIT_CLIENT_ID,
+	clientSecret: process.env.REDDIT_CLIENT_SECRET,
+	username: process.env.REDDIT_USER,
+	password: process.env.REDDIT_PASS,
 });
 
 function registerClient(clientConfig) {
