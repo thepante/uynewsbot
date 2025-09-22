@@ -26,12 +26,14 @@ const snoowrap = new Snoowrap({
 	password: process.env.REDDIT_PASS,
 });
 
+snoowrap.userAgent = userAgent;
+
 function registerClient(clientConfig) {
 	console.log('Registering', clientConfig);
 	const client = new SnooStorm.SubmissionStream(snoowrap, {
 		subreddit: clientConfig.id,
 		limit: clientConfig.limit,
-		pollTime: production && clientConfig.pollTime ? clientConfig.pollTime : 10000,
+		pollTime: (production && clientConfig.pollTime) ? clientConfig.pollTime : 10000,
 	});
 	client.on('item', processRedditPost);
 }

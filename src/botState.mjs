@@ -1,10 +1,8 @@
 import path from 'path';
 import nconf from 'nconf';
 import cron from 'node-cron';
-import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 
-dotenv.config();
 nconf.file('conf', path.join(process.cwd(), '.configuration.json'));
 
 const subreddits = nconf.get('subreddits');
