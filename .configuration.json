@@ -2,7 +2,7 @@
   "bot": {
     "account": "bot_canillita",
     "accountDev": "canillita",
-    "userAgent": "script:u/@account@ (news parser):v@version@ (by u/thepante)"
+    "userAgent": "bot:u/@account@ (news parser):v@version@ (by u/thepante)"
   },
   "subreddits": [
     {
