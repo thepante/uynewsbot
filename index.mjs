@@ -19,7 +19,7 @@ console.log('Env:', process.env.ENVIRONMENT, "| Port:", process.env.PORT);
 console.log('UA:', userAgent);
 
 const snoowrap = new Snoowrap({
-	userAgent: process.env.REDDIT_UA,
+	userAgent: userAgent,
 	clientId: process.env.REDDIT_CLIENT_ID,
 	clientSecret: process.env.REDDIT_CLIENT_SECRET,
 	username: process.env.REDDIT_USER,
