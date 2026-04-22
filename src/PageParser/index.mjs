@@ -39,6 +39,7 @@ import Telenochecomuy from './telenochecomuy.mjs';
 import Tncomar from './tncomar.mjs';
 import Vicecom from "./vicecom.mjs";
 import Yahoocom from "./yahoocom.mjs";
+import Zonaroja from "./zonaroja.mjs";
 import _ from 'lodash';
 import {getCanonicalURL} from "../canonical.mjs";
 
@@ -84,6 +85,7 @@ export default async function parsePage(url) {
         Tncomar,
         Vicecom,
         Yahoocom,
+        Zonaroja,
     ];
 
     const ProcessorClasses = _.filter(processors, function(p) {
