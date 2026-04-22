@@ -7,6 +7,7 @@ import Carasycaretascomuy from './carasycaretascomuy.mjs';
 import Carve850comuy from './carve850comuy.mjs';
 import Cientoochentacomuy from './180comuy.mjs';
 import Clarincom from './clarincom.mjs';
+import Cnncom from './cnncom.mjs';
 import Cronicasdelestecomuy from './cronicasdelestecomuy.mjs';
 import Dailymailcouk from './dailymailcouk.mjs';
 import Derechosdigitalesorg from './derechosdigitalesorg.mjs';
@@ -39,7 +40,7 @@ import Telenochecomuy from './telenochecomuy.mjs';
 import Tncomar from './tncomar.mjs';
 import Vicecom from "./vicecom.mjs";
 import Yahoocom from "./yahoocom.mjs";
-import Zonaroja from "./zonaroja.mjs";
+import Zonarojauy from "./zonarojauy.mjs";
 import _ from 'lodash';
 import {getCanonicalURL} from "../canonical.mjs";
 
@@ -53,6 +54,7 @@ export default async function parsePage(url) {
         Brechacomuy,
         Busquedacomuy,
         Carasycaretascomuy,
+        Cnncom,
         Carve850comuy,
         Cientoochentacomuy,
         Cronicasdelestecomuy,
@@ -85,7 +87,7 @@ export default async function parsePage(url) {
         Tncomar,
         Vicecom,
         Yahoocom,
-        Zonaroja,
+        Zonarojauy,
     ];
 
     const ProcessorClasses = _.filter(processors, function(p) {
