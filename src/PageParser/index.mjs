@@ -21,6 +21,7 @@ import Elpaiscom from './elpaiscom.mjs';
 import Elpaiscomuy from './elpaiscomuy.mjs';
 import Elpitazonet from './elpitazonet.mjs';
 import Gubuy from './gubuy.mjs';
+import Helveciacomuy from './helveciacomuy.mjs';
 import Infobaecom from './infobaecom.mjs';
 import Ladiariacomuy from './ladiariacomuy.mjs';
 import Lamananacomuy from "./lamananacomuy.mjs";
@@ -69,6 +70,7 @@ export default async function parsePage(url) {
         Elpaiscomuy,
         Elpitazonet,
         Gubuy,
+        Helveciacomuy,
         Infobaecom,
         Ladiariacomuy,
         Lamananacomuy,
